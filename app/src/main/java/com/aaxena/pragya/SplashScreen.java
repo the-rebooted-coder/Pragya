@@ -26,7 +26,7 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void goToNextScreen() {
-        int splash_screen_sound = 22000;
+        int splash_screen_sound = 27000;
         new Handler().postDelayed(() -> {
             Button start = findViewById(R.id.firstStart);
             start.setVisibility(View.VISIBLE);
@@ -48,7 +48,7 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void playAudio() {
-        int keyboard_sound = 4600;
+        int keyboard_sound = 5200;
         new Handler().postDelayed(() -> {
             final MediaPlayer mp = MediaPlayer.create(this, R.raw.pragya_keyboard);
             mp.start();
