@@ -26,7 +26,7 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void goToNextScreen() {
-        int splash_screen_sound = 23000;
+        int splash_screen_sound = 22000;
         new Handler().postDelayed(() -> {
             Button start = findViewById(R.id.firstStart);
             start.setVisibility(View.VISIBLE);
