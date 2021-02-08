@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.VideoView;
@@ -34,6 +37,13 @@ public class SplashScreen extends AppCompatActivity {
             start.setOnClickListener(v -> {
                 final MediaPlayer mp = MediaPlayer.create(this, R.raw.short_click);
                 mp.start();
+                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    v2.vibrate(VibrationEffect.createOneShot(25, VibrationEffect.DEFAULT_AMPLITUDE));
+                } else {
+                    //deprecated in API 26
+                    v2.vibrate(25);
+                }
                 Intent i = new Intent(SplashScreen.this, SignUp.class);
                 startActivity(i);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
@@ -62,5 +72,4 @@ public class SplashScreen extends AppCompatActivity {
         videoview.setVideoURI(uri);
         videoview.start();
     }
-    
 }
