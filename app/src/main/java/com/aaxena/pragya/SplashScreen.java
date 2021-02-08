@@ -32,6 +32,8 @@ public class SplashScreen extends AppCompatActivity {
             start.setVisibility(View.VISIBLE);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             start.setOnClickListener(v -> {
+                final MediaPlayer mp = MediaPlayer.create(this, R.raw.short_click);
+                mp.start();
                 Intent i = new Intent(SplashScreen.this, SignUp.class);
                 startActivity(i);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
@@ -60,5 +62,5 @@ public class SplashScreen extends AppCompatActivity {
         videoview.setVideoURI(uri);
         videoview.start();
     }
-
+    
 }
