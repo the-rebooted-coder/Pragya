@@ -7,6 +7,8 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
 import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,23 +22,36 @@ public class SplashScreen extends AppCompatActivity {
         setAudio();
         playVideo();
         playAudio();
-
+        goToNextScreen();
     }
 
-    /*
-    Sets Media Volume up so that if the user's volume is low the audio still sounds
-     */
+    private void goToNextScreen() {
+        int splash_screen_sound = 23000;
+        new Handler().postDelayed(() -> {
+            Button start = findViewById(R.id.firstStart);
+            start.setVisibility(View.VISIBLE);
+            start.setOnClickListener(v -> {
+                Intent i = new Intent(SplashScreen.this, SignUp.class);
+                startActivity(i);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
+            });
+        }, splash_screen_sound);}
+
     private void setAudio() {
+         /*
+        Sets Media Volume up so that if the user's volume is low the audio still sounds
+         */
         AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
         audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 10, 0);
     }
 
     private void playAudio() {
-        int splash_screen_time_out = 4600;
+        int keyboard_sound = 4600;
         new Handler().postDelayed(() -> {
             final MediaPlayer mp = MediaPlayer.create(this, R.raw.pragya_keyboard);
             mp.start();
-        }, splash_screen_time_out);}
+        }, keyboard_sound);}
 
     private void playVideo() {
         VideoView videoview = findViewById(R.id.videoView);
@@ -46,10 +61,3 @@ public class SplashScreen extends AppCompatActivity {
     }
 
 }
-
-/*
- Intent i = new Intent(SplashScreen.this, SignUp.class);
-                startActivity(i);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                finish();
- */
