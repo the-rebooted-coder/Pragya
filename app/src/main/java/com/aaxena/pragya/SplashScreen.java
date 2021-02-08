@@ -30,6 +30,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             Button start = findViewById(R.id.firstStart);
             start.setVisibility(View.VISIBLE);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             start.setOnClickListener(v -> {
                 Intent i = new Intent(SplashScreen.this, SignUp.class);
                 startActivity(i);
