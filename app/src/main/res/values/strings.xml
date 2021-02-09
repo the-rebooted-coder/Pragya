@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Pragya</string>
     <string name="start">START</string>
+    <string name="sign_in">Continue with Google</string>
     <string-array name="loading_msg">
         <item>Choosing Between The Blue and Red Pill</item>
         <item>Making the Earth Flat</item>
