@@ -60,7 +60,7 @@ public class SplashScreenLong extends AppCompatActivity {
     }
 
     private void playAudio() {
-        int keyboard_sound = 5200;
+        int keyboard_sound = 5300;
         new Handler().postDelayed(() -> {
             final MediaPlayer mp = MediaPlayer.create(this, R.raw.pragya_keyboard);
             mp.start();

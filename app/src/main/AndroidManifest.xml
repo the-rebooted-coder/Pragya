@@ -10,8 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pragya">
-        <activity android:name=".SignUp"></activity>
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SignUp"/>
+        <activity android:name=".SplashScreenLong">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
