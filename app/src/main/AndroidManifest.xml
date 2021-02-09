@@ -11,13 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pragya">
-        <activity android:name=".AboutDevs"></activity>
+        <activity android:name=".AboutDevs"/>
         <activity android:name=".SignUp" />
         <activity android:name=".SplashScreenShort" />
-        <activity android:name=".SplashScreenLong">
+        <activity android:name=".SplashScreenLong"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
