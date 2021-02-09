@@ -67,6 +67,9 @@ public class SplashScreen extends AppCompatActivity {
         }, keyboard_sound);}
 
     private void playVideo() {
+        /*
+        Playing splash screen video
+         */
         VideoView videoview = findViewById(R.id.videoView);
         Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.splash_long);
         videoview.setVideoURI(uri);
