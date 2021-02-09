@@ -98,26 +98,24 @@ public class SignUp extends AppCompatActivity {
             if (account !=null){
                 Intent i=new Intent(SignUp.this,Landing.class);
                 startActivity(i);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();
             }
             FirebaseGoogleAuth(acc);
         }
         catch (ApiException e){
-            Toast.makeText(SignUp.this,"Oops! We ran into trouble",Toast.LENGTH_LONG).show();
+            Toast.makeText(SignUp.this,"Something Went Wrong",Toast.LENGTH_SHORT).show();
         }
     }
 
     private void FirebaseGoogleAuth(GoogleSignInAccount acct){
         AuthCredential authCredential = GoogleAuthProvider.getCredential(acct.getIdToken(),null);
-        mAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    FirebaseUser user = mAuth.getCurrentUser();
-                }
-                else {
-                    Toast.makeText(SignUp.this,"Failed",Toast.LENGTH_LONG).show();
-                }
+        mAuth.signInWithCredential(authCredential).addOnCompleteListener(this, task -> {
+            if (task.isSuccessful()){
+                FirebaseUser user = mAuth.getCurrentUser();
+            }
+            else {
+                Toast.makeText(SignUp.this,"Failed",Toast.LENGTH_SHORT).show();
             }
         });
     }
