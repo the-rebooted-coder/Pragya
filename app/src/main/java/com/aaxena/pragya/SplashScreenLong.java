@@ -16,6 +16,9 @@ import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+
 public class SplashScreenLong extends AppCompatActivity {
 
     @Override
@@ -29,12 +32,9 @@ public class SplashScreenLong extends AppCompatActivity {
     }
 
     private void goToNextScreen() {
-        int splash_screen_sound = 27000;
+        int splash_screen_sound = 28000;
         new Handler().postDelayed(() -> {
-            Button start = findViewById(R.id.firstStart);
-            start.setVisibility(View.VISIBLE);
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            start.setOnClickListener(v -> {
+                check();
                 final MediaPlayer mp = MediaPlayer.create(this, R.raw.short_click);
                 mp.start();
                 Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -44,13 +44,25 @@ public class SplashScreenLong extends AppCompatActivity {
                     //deprecated in API 26
                     v2.vibrate(25);
                 }
-                //Intent i = new Intent(SplashScreenLong.this, SignUp.class);
-                Intent i = new Intent(SplashScreenLong.this, SignUp.class);
-                startActivity(i);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                finish();
-            });
         }, splash_screen_sound);}
+
+    private void check() {
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+        if (account !=null){
+            //User Signed In, Proceeding to Landing
+            Intent i=new Intent(SplashScreenLong.this,Landing.class);
+            startActivity(i);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            finish();
+        }
+        else {
+            //Newbie
+            Intent i=new Intent(SplashScreenLong.this,SignUp.class);
+            startActivity(i);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            finish();
+        }
+    }
 
     private void setAudio() {
          /*
