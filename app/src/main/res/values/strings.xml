@@ -1,16 +1,12 @@
 <resources>
     <string name="app_name">Pragya</string>
     <string name="start">START</string>
-    
-    <!-- String Array Starting from here-->
     <string-array name="loading_msg">
         <item>Choosing Between The Blue and Red Pill</item>
-        <item>Thinking Of an Offer Which You Can't Refuse</item>
         <item>Making the Earth Flat</item>
         <item>Filling Pot with Stones</item>
-        <item>Melting the Chocolate 🍫</item>
+        <item>Melting the Chocolate</item>
         <item>Filling Pot with Stones</item>
         <item>Downloading more RAM...</item>
     </string-array>
-    <!-- String Array Ending-->
 </resources>
