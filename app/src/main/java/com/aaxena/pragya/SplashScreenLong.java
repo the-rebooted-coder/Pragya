@@ -45,7 +45,7 @@ public class SplashScreenLong extends AppCompatActivity {
                     v2.vibrate(25);
                 }
                 //Intent i = new Intent(SplashScreenLong.this, SignUp.class);
-                Intent i = new Intent(SplashScreenLong.this, SplashScreenShort.class);
+                Intent i = new Intent(SplashScreenLong.this, SignUp.class);
                 startActivity(i);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();

@@ -44,8 +44,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.85"
-        app:rippleColor="#33AAAAAA"
-        app:strokeColor="@color/grey"
+        app:rippleColor="#E4CCCCCC"
+        app:strokeColor="#E6E6E6"
         app:strokeWidth="2dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
