@@ -3,7 +3,6 @@
     package="com.aaxena.pragya">
 
     <uses-permission android:name="android.permission.VIBRATE" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,9 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pragya">
-        <activity android:name=".SplashScreenShort"></activity>
-        <activity android:name=".SignUp" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SignUp"/>
+        <activity android:name=".SplashScreenLong">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
