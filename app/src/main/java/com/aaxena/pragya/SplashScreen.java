@@ -21,7 +21,7 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash_screen);
+        setContentView(R.layout.splash_screen_long);
         setAudio();
         playVideo();
         playAudio();
@@ -64,7 +64,8 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             final MediaPlayer mp = MediaPlayer.create(this, R.raw.pragya_keyboard);
             mp.start();
-        }, keyboard_sound);}
+        }, keyboard_sound);
+    }
 
     private void playVideo() {
         /*
