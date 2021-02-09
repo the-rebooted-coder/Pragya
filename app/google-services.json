@@ -14,6 +14,30 @@
       },
       "oauth_client": [
         {
+          "client_id": "599330362531-525ntp5b0i4clj59509mu0t7bs4qe5dj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aaxena.pragya",
+            "certificate_hash": "ddb407b503ba6953bd9b98af5cb9bfa82e06f902"
+          }
+        },
+        {
+          "client_id": "599330362531-ekuqgdd3fqgngapkmarkmreei9bj2c1t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aaxena.pragya",
+            "certificate_hash": "6e6d8aff539067231120003754ca6dbac49834c2"
+          }
+        },
+        {
+          "client_id": "599330362531-hve3d5kgf8mh9l8ti0u1gqgleol01m58.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aaxena.pragya",
+            "certificate_hash": "70371c4201398e854dd986b2a996c03f7100476b"
+          }
+        },
+        {
           "client_id": "599330362531-ftig214e20vloucuabb7odnf78b02m8e.apps.googleusercontent.com",
           "client_type": 3
         }
