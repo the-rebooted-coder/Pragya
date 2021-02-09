@@ -16,7 +16,7 @@ import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreenLong extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class SplashScreen extends AppCompatActivity {
                     //deprecated in API 26
                     v2.vibrate(25);
                 }
-                Intent i = new Intent(SplashScreen.this, SignUp.class);
+                Intent i = new Intent(SplashScreenLong.this, SignUp.class);
                 startActivity(i);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();
