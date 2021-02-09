@@ -9,7 +9,6 @@ import java.util.Random;
 
 public class SplashScreenShort extends AppCompatActivity {
 
-    private String[] names;
     TextView textView;
 
     @Override
@@ -17,7 +16,7 @@ public class SplashScreenShort extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen_short);
         textView = findViewById(R.id.textView);
-        names = getResources().getStringArray(R.array.loading_msg);
+        String[] names = getResources().getStringArray(R.array.loading_msg);
         int randomIndex = new Random().nextInt(names.length);
         String randomName = names[randomIndex];
         textView.setText(randomName);
