@@ -16,9 +16,10 @@ public class SplashScreenShort extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen_short);
-        int random_msg = new Random().nextInt (names.length);
-        String randomName = names[random_msg];
-        textView.setText(randomName);
+        textView = findViewById(R.id.textView);
         names = getResources().getStringArray(R.array.loading_msg);
+        int randomIndex = new Random().nextInt(names.length);
+        String randomName = names[randomIndex];
+        textView.setText(randomName);
     }
 }
