@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pragya">
-        <activity android:name=".Settings"/>
+        <activity android:name=".UserInfo"></activity>
+        <activity android:name=".Settings" />
         <activity android:name=".Landing" />
         <activity android:name=".AboutDevs" />
         <activity android:name=".SignUp" />
