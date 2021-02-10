@@ -18,6 +18,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
+/*
+Bit by Bit Information
+@author Spandan Saxena aka the-rebooted-coder
+ */
+
 public class UserInfo extends AppCompatActivity {
     private static final String PREFS_NAME = "Vibration";
     String TEXT = "text";
