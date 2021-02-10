@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +23,15 @@ public class UserInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent toLanding = new Intent(UserInfo.this,Landing.class);
+        startActivity (toLanding);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
+    }
+
     private void vibrateDevice() {
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         String vibration_setting = sharedPreferences.getString(TEXT,"on");

@@ -57,6 +57,11 @@ public class Landing extends AppCompatActivity {
             case R.id.about:
                 break;
             case R.id.profile:
+                vibrateDevice();
+                Intent toProfile = new Intent(Landing.this,UserInfo.class);
+                startActivity(toProfile);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
                 break;
         }
         return true;
