@@ -1,6 +1,7 @@
 package com.aaxena.pragya;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,14 +11,19 @@ import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+import com.pedromassango.doubleclick.DoubleClick;
+import com.pedromassango.doubleclick.DoubleClickListener;
 
 /*
 Bit by Bit Information
@@ -27,6 +33,7 @@ Bit by Bit Information
 public class UserInfo extends AppCompatActivity {
     private static final String PREFS_NAME = "Vibration";
     String TEXT = "text";
+    LottieAnimationView logout_complete;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -37,7 +44,30 @@ public class UserInfo extends AppCompatActivity {
         user_bios.setText("->JUETPragya % ");
         showInfoAsBios();
 
+        logout_complete = findViewById(R.id.lottie_ending);
+        logout_complete.setVisibility(View.INVISIBLE);
+
         Button logout = findViewById(R.id.logout);
+        logout.setOnClickListener(new DoubleClick(new DoubleClickListener() {
+            @Override
+            public void onSingleClick(View view) {
+                Toast.makeText(UserInfo.this,"Press twice to Logout!",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onDoubleClick(View view) {
+                logout.setVisibility(View.INVISIBLE);
+                user_bios.setVisibility(View.INVISIBLE);
+
+                Toast.makeText(UserInfo.this,"Logging you out in retro style!",Toast.LENGTH_SHORT).show();
+                logout_complete.setVisibility(View.VISIBLE);
+                int death_text = 2800;
+                new Handler().postDelayed(() -> {
+                    ((ActivityManager)UserInfo.this.getSystemService(ACTIVITY_SERVICE))
+                            .clearApplicationUserData();
+                }, death_text);
+            }
+        }));
     }
 
     @SuppressLint("SetTextI18n")
