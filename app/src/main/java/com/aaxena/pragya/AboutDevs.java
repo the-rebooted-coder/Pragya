@@ -1,9 +1,8 @@
 package com.aaxena.pragya;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
@@ -24,10 +23,5 @@ public class AboutDevs extends AppCompatActivity {
         carouselView.setPageCount(sampleImages.length);
         carouselView.setImageListener(imageListener);
     }
-    ImageListener imageListener = new ImageListener() {
-        @Override
-        public void setImageForPosition(int position, ImageView imageView) {
-            imageView.setImageResource(sampleImages[position]);
-        }
-    };
+    ImageListener imageListener = (position, imageView) -> imageView.setImageResource(sampleImages[position]);
 }
