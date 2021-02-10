@@ -2,6 +2,7 @@ package com.aaxena.pragya;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -10,8 +11,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.view.View;
-import android.widget.Button;
 import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,15 +19,33 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 public class SplashScreenLong extends AppCompatActivity {
+    private static final String LONG_SPLASH = "Splash";
+    String SPLASH = "splash";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen_long);
-        setAudio();
-        playVideo();
-        playAudio();
-        goToNextScreen();
+        splashCheck();
+    }
+
+    private void splashCheck() {
+        SharedPreferences sharedPreferences = getSharedPreferences(LONG_SPLASH, Context.MODE_PRIVATE);
+        String splash_settings = sharedPreferences.getString(SPLASH,"on");
+        if (splash_settings.equals("off")){
+            Intent toShortSplash = new Intent(SplashScreenLong.this,SplashScreenShort.class);
+            startActivity(toShortSplash);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            finish();
+        }
+        else
+        {
+            setAudio();
+            playVideo();
+            playAudio();
+            goToNextScreen();
+        }
+
     }
 
     private void goToNextScreen() {

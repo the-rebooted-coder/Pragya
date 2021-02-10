@@ -33,8 +33,6 @@ public class AboutDevs extends AppCompatActivity {
     }
     ImageListener imageListener = (position, imageView) -> imageView.setImageResource(sampleImages[position]);
 
-
-
     private void vibrateDevice() {
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         String vibration_setting = sharedPreferences.getString(TEXT,"on");
