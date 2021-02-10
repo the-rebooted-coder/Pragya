@@ -55,6 +55,7 @@ public class Landing extends AppCompatActivity {
                 finish();
                 break;
             case R.id.about:
+                Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.profile:
                 vibrateDevice();
