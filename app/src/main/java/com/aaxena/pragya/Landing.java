@@ -55,7 +55,11 @@ public class Landing extends AppCompatActivity {
                 finish();
                 break;
             case R.id.about:
-                Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show();
+                vibrateDevice();
+                Intent toAboutPragya = new Intent(Landing.this,AboutPragya.class);
+                startActivity(toAboutPragya);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
                 break;
             case R.id.profile:
                 vibrateDevice();
