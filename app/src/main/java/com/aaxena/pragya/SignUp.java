@@ -109,6 +109,7 @@ public class SignUp extends AppCompatActivity {
                 FirebaseUser user = mAuth.getCurrentUser();
             }
             else {
+                recreate();
                 Toast.makeText(SignUp.this,"Failed",Toast.LENGTH_SHORT).show();
             }
         });
