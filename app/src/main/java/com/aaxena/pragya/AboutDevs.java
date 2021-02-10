@@ -2,6 +2,7 @@ package com.aaxena.pragya;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -90,5 +91,14 @@ public class AboutDevs extends AppCompatActivity {
             default:
                 return super.dispatchKeyEvent(event);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent toLanding = new Intent(AboutDevs.this,Landing.class);
+        startActivity (toLanding);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
     }
 }

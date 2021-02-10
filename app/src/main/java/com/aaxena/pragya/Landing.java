@@ -52,6 +52,7 @@ public class Landing extends AppCompatActivity {
                 Intent toDevs = new Intent(Landing.this,AboutDevs.class);
                 startActivity(toDevs);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
                 break;
             case R.id.about:
                 break;
