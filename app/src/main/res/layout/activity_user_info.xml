@@ -35,8 +35,8 @@
 
     <TextView
         android:id="@+id/current_user"
-        android:layout_width="307dp"
-        android:layout_height="323dp"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
         android:background="@color/black"
         android:fontFamily="@font/pragya"
         android:textColor="@color/white"
