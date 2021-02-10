@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <item android:id="@+id/menu_item_share"
-        android:title="Settings"
-        android:icon="@android:drawable/ic_menu_share"
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/empty"
-        android:title="About Project"
-        android:orderInCategory="101"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_baseline_more_vert_24">
-
-    </item>
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item
+            android:id="@+id/feeds"
+            android:title="@string/settings"/>
+        <item
+            android:id="@+id/friends"
+            android:title="@string/about_developers"/>
+        <item
+            android:id="@+id/about"
+            android:title="@string/about"/>
 </menu>
