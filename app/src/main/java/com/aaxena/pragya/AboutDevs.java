@@ -12,7 +12,7 @@ public class AboutDevs extends AppCompatActivity {
 
     CarouselView carouselView;
 
-    int[] sampleImages = {R.drawable.spandan, R.drawable.shrish, R.drawable.shubham, R.drawable.sriniv};
+    int[] sampleImages = {R.drawable.spandan,R.drawable.shrish,R.drawable.shubham,R.drawable.sriniv};
 
 
     @Override

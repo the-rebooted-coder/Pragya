@@ -45,9 +45,13 @@ public class Landing extends AppCompatActivity {
                 Intent toSettings = new Intent(Landing.this,Settings.class);
                 startActivity(toSettings);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
                 break;
             case R.id.devs:
                 vibrateDevice();
+                Intent toDevs = new Intent(Landing.this,AboutDevs.class);
+                startActivity(toDevs);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
             case R.id.about:
                 break;
