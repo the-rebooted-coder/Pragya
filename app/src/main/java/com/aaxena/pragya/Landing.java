@@ -34,12 +34,14 @@ public class Landing extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId())
         {
-            case R.id.feeds:
+            case R.id.settings:
                 break;
-            case R.id.friends:
+            case R.id.devs:
                 vibrateDevice();
                 break;
             case R.id.about:
+                break;
+            case R.id.profile:
                 break;
         }
         return true;
