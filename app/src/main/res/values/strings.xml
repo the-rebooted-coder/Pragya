@@ -2,6 +2,7 @@
     <string name="app_name">Pragya</string>
     <string name="start">START</string>
     <string name="sign_in">Continue with Google</string>
+    <string name="default_web_client_id" />
     <string-array name="loading_msg">
         <item>Choosing Between The Blue and Red Pill</item>
         <item>Filling Pot with Stones</item>
