@@ -10,6 +10,8 @@ import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.KeyEvent;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +23,7 @@ public class AboutDevs extends AppCompatActivity {
     private static final String PREFS_NAME = "Vibration";
     String TEXT = "text";
     CarouselView carouselView;
+    TextView textView;
 
     int[] sampleImages = {R.drawable.spandan,R.drawable.shrish,R.drawable.shubham,R.drawable.sriniv};
     @Override
@@ -32,7 +35,22 @@ public class AboutDevs extends AppCompatActivity {
         carouselView.setPageCount(sampleImages.length);
         carouselView.setImageListener(imageListener);
     }
-    ImageListener imageListener = (position, imageView) -> imageView.setImageResource(sampleImages[position]);
+    ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            imageView.setImageResource(sampleImages[position]);
+            for (int i=0; i<sampleImages.length; i++) {
+                if (sampleImages[i] == 0)
+                    textView.setText("Spandan Saxena");
+                else if (sampleImages[i] == 1)
+                    textView.setText("Shrish Sharma");
+                else if (sampleImages[i] == 2)
+                    textView.setText("Shubham Munjani");
+                else if (sampleImages[i] == 3)
+                    textView.setText("Srinivasan Bashyam");
+            }
+        }
+    };
 
     private void vibrateDevice() {
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
