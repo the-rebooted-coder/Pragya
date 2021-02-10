@@ -10,6 +10,8 @@
     <string name="long_splash">BIOS Startup</string>
     <string name="switch_on">Switch On</string>
     <string name="abt_user">User</string>
+    <string name="tip_about_vibrations">Tip: You can disable system vibrations from anywhere in the app by simply pressing the volme up and down buttons once!</string>
+    <string name="image_of_retro_switch">Image of Retro Switch</string>
     <string-array name="loading_msg">
         <item>Choosing Between The Blue and Red Pill</item>
         <item>Filling Pot with Stones</item>

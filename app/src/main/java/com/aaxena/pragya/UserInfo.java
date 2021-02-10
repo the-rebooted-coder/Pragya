@@ -61,7 +61,7 @@ public class UserInfo extends AppCompatActivity {
 
                 Toast.makeText(UserInfo.this,"Logging you out in retro style!",Toast.LENGTH_SHORT).show();
                 logout_complete.setVisibility(View.VISIBLE);
-                int death_text = 2800;
+                int death_text = 2900;
                 new Handler().postDelayed(() -> {
                     ((ActivityManager)UserInfo.this.getSystemService(ACTIVITY_SERVICE))
                             .clearApplicationUserData();
