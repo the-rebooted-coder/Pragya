@@ -44,4 +44,7 @@ dependencies {
 
     //Added Lottie Animations
     implementation "com.airbnb.android:lottie:3.4.0"
+
+    //Carousel
+    compile 'com.synnapps:carouselview:0.1.5'
 }
