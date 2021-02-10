@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.KeyEvent;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,8 @@ public class UserInfo extends AppCompatActivity {
         TextView user_bios = findViewById(R.id.current_user);
         user_bios.setText("->JUETPragya % ");
         showInfoAsBios();
+
+        Button logout = findViewById(R.id.logout);
     }
 
     @SuppressLint("SetTextI18n")
