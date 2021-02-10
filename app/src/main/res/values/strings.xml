@@ -3,6 +3,10 @@
     <string name="start">START</string>
     <string name="sign_in">Continue with Google</string>
     <string name="about_devs">about_devs</string>
+    <string name="settings">Settings</string>
+    <string name="about_developers">Developers</string>
+    <string name="about">About Pragya</string>
+    <string name="my_profile">My Profile</string>
     <string-array name="loading_msg">
         <item>Choosing Between The Blue and Red Pill</item>
         <item>Filling Pot with Stones</item>
