@@ -9,6 +9,7 @@
     <string name="my_profile">My Profile</string>
     <string name="long_splash">BIOS Startup</string>
     <string name="switch_on">Switch On</string>
+    <string name="abt_user">User</string>
     <string-array name="loading_msg">
         <item>Choosing Between The Blue and Red Pill</item>
         <item>Filling Pot with Stones</item>
