@@ -3,6 +3,7 @@ package com.aaxena.pragya;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -30,6 +31,7 @@ public class Landing extends AppCompatActivity {
         inflater.inflate(R.menu.menu, menu);
         return true;
     }
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId())
