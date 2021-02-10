@@ -59,7 +59,7 @@ public class UserInfo extends AppCompatActivity {
                 logout.setVisibility(View.INVISIBLE);
                 user_bios.setVisibility(View.INVISIBLE);
 
-                Toast.makeText(UserInfo.this,"Logging you out in retro style!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserInfo.this,"Logging you out in Retro!",Toast.LENGTH_SHORT).show();
                 logout_complete.setVisibility(View.VISIBLE);
                 int death_text = 2900;
                 new Handler().postDelayed(() -> {
