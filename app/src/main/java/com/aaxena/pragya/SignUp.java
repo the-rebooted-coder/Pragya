@@ -109,8 +109,8 @@ public class SignUp extends AppCompatActivity {
                 FirebaseUser user = mAuth.getCurrentUser();
             }
             else {
+                Toast.makeText(SignUp.this,"You cached a bug!",Toast.LENGTH_SHORT).show();
                 recreate();
-                Toast.makeText(SignUp.this,"Failed",Toast.LENGTH_SHORT).show();
             }
         });
     }
