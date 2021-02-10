@@ -54,7 +54,6 @@ public class SplashScreenShort extends AppCompatActivity {
             startActivity(i);
             finish();
         }
-        startActivity(i);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
