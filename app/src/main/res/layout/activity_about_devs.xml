@@ -23,12 +23,12 @@
 
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carouselView"
-        android:layout_width="400dp"
-        android:layout_height="450dp"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:layout_constraintVertical_bias="0.235" />
 
@@ -38,11 +38,12 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/pragya"
         android:text="TextView"
-        android:textSize="30sp"
         android:textColor="@color/white"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/carouselView" />
+        app:layout_constraintTop_toBottomOf="@+id/carouselView"
+        app:layout_constraintVertical_bias="0.3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
