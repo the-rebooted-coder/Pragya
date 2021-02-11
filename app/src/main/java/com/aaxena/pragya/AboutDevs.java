@@ -30,12 +30,11 @@ public class AboutDevs extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_devs);
-
         models = new ArrayList<>();
-        models.add(new Model(R.drawable.spandan, "Spandan Saxena", "BackEnd Developer"));
-        models.add(new Model(R.drawable.shrish, "Shrish Sharma", "UI and UX"));
-        models.add(new Model(R.drawable.sriniv, "Srinivasan Bashyam", "Code Watcher"));
-        models.add(new Model(R.drawable.shubham, "Shubham Munjani", "Code Commenter"));
+        models.add(new Model(R.drawable.spandan, "Spandan Saxena", "BackEnd Developer","Developers"));
+        models.add(new Model(R.drawable.shrish, "Shrish Sharma", "UI and UX","are just"));
+        models.add(new Model(R.drawable.sriniv, "Srinivasan Bashyam", "Code Watcher","tools that transform"));
+        models.add(new Model(R.drawable.shubham, "Shubham Munjani", "Code Slider","caffeine to code"));
 
         adapter = new Adapter(models, this);
 
