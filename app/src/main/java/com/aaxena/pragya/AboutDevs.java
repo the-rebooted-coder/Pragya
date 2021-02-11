@@ -35,8 +35,11 @@ public class AboutDevs extends AppCompatActivity {
         setContentView(R.layout.activity_about_devs);
         viewPager = findViewById(R.id.viewPager);
 
+
+        TextView developer_text = findViewById(R.id.developerOnInner);
         TextView terminal = findViewById(R.id.terminal);
         terminal.setVisibility(View.VISIBLE);
+        developer_text.setVisibility(View.VISIBLE);
         viewPager.setVisibility(View.INVISIBLE);
         int splash_screen_short = 100;
         new Handler().postDelayed(() -> {
@@ -82,6 +85,7 @@ public class AboutDevs extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             terminal.setText("->JUETPragya % developers\n\n_");
             terminal.setVisibility(View.INVISIBLE);
+            developer_text.setVisibility(View.INVISIBLE);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             viewPager.setVisibility(View.VISIBLE);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
