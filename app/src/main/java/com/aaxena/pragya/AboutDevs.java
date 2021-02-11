@@ -10,47 +10,38 @@ import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.KeyEvent;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
-import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AboutDevs extends AppCompatActivity {
     private static final String PREFS_NAME = "Vibration";
     String TEXT = "text";
-    CarouselView carouselView;
-    TextView textView;
+    ViewPager viewPager;
+    Adapter adapter;
+    List<Model> models;
 
-    int[] sampleImages = {R.drawable.spandan,R.drawable.shrish,R.drawable.shubham,R.drawable.sriniv};
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_devs);
 
-        carouselView = findViewById(R.id.carouselView);
-        carouselView.setPageCount(sampleImages.length);
-        carouselView.setImageListener(imageListener);
+        models = new ArrayList<>();
+        models.add(new Model(R.drawable.spandan, "Spandan Saxena", "BackEnd Developer"));
+        models.add(new Model(R.drawable.shrish, "Shrish Sharma", "UI and UX"));
+        models.add(new Model(R.drawable.sriniv, "Srinivasan Bashyam", "Code Watcher"));
+        models.add(new Model(R.drawable.shubham, "Shubham Munjani", "Code Commenter"));
+
+        adapter = new Adapter(models, this);
+
+        viewPager = findViewById(R.id.viewPager);
+        viewPager.setAdapter(adapter);
     }
-    ImageListener imageListener = new ImageListener() {
-        @Override
-        public void setImageForPosition(int position, ImageView imageView) {
-            imageView.setImageResource(sampleImages[position]);
-            for (int i=0; i<sampleImages.length; i++) {
-                if (sampleImages[i] == 0)
-                    textView.setText("Spandan Saxena");
-                else if (sampleImages[i] == 1)
-                    textView.setText("Shrish Sharma");
-                else if (sampleImages[i] == 2)
-                    textView.setText("Shubham Munjani");
-                else if (sampleImages[i] == 3)
-                    textView.setText("Srinivasan Bashyam");
-            }
-        }
-    };
 
     private void vibrateDevice() {
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);

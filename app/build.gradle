@@ -48,9 +48,6 @@ dependencies {
     //Added Lottie Animations
     implementation "com.airbnb.android:lottie:3.4.0"
 
-    //Carousel
-    implementation 'com.synnapps:carouselview:0.1.5'
-
     //Card View
     implementation 'androidx.cardview:cardview:1.0.0'
 }
