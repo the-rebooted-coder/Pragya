@@ -18,12 +18,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import br.usp.ime.retrobreaker.WrapperActivity;
+
 public class Settings extends AppCompatActivity {
     private static final String PREFS_NAME = "Vibration";
     String TEXT = "text";
     private static final String LONG_SPLASH = "Splash";
     String SPLASH = "splash";
     MediaPlayer mPlayer;
+    int clickcount=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +63,48 @@ public class Settings extends AppCompatActivity {
                 recreate();
             }
         });
+        Button startEaster = findViewById(R.id.startEaster);
+        startEaster.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickcount=clickcount+1;
+                if(clickcount==1)
+                {
+                    Toast.makeText(getApplicationContext(),"Hey Did You Found Something?", Toast.LENGTH_SHORT).show();
+                }
+                else if (clickcount==2)
+                {
+                    Toast.makeText(getApplicationContext(),"Come on, there is nothing here", Toast.LENGTH_SHORT).show();
+                }
+                else if (clickcount==3)
+                {
+                    Toast.makeText(getApplicationContext(),"You are not going right?", Toast.LENGTH_SHORT).show();
+                }else if (clickcount==4)
+                {
+                    Toast.makeText(getApplicationContext(),"Well, is this clicking thing amusing you?", Toast.LENGTH_SHORT).show();
+                }
+                else if (clickcount==5)
+                {
+                    Toast.makeText(getApplicationContext(),"Stop right there!", Toast.LENGTH_SHORT).show();
+                }
+                else if (clickcount==6)
+                {
+                    Toast.makeText(getApplicationContext(),"If I was you, I would have stopped", Toast.LENGTH_SHORT).show();
+                }
+                else if (clickcount==7)
+                {
+                    Toast.makeText(getApplicationContext(),"Ok here take the key" + ("\uD83D\uDD11"), Toast.LENGTH_SHORT).show();
+                }
+                else if (clickcount==8)
+                {
+                    vibrateDevice();
+                    Toast.makeText(getApplicationContext(),"Pragya, Developed by One Silicon Diode ;)", Toast.LENGTH_LONG).show();
+                    Intent toGame = new Intent(Settings.this, WrapperActivity.class);
+                    startActivity(toGame);
+                }
+            }
+        });
     }
-
     private void playSound() {
         if (mPlayer != null && mPlayer.isPlaying()) {
             mPlayer.stop();
