@@ -21,9 +21,6 @@ public class AboutPragya extends AppCompatActivity {
 
     }
 
-
-
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
