@@ -2,14 +2,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/retro_red"
     tools:context="br.usp.ime.retrobreaker.WrapperActivity"
     tools:ignore="MergeRootFrame" >
+
+    <TextView
+        android:id="@+id/easterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/pragya"
+        android:textSize="28sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:text="@string/pragya_retro_easter"/>
 
     <TextView
         android:id="@+id/mainHighScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textSize="24sp"
+        android:fontFamily="@font/pragya"
         android:gravity="center"
         android:text="@string/high_score"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -17,6 +31,8 @@
     <Button
         android:id="@+id/newGameButton"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/pragya"
+        android:textSize="20sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/new_game" />
@@ -25,12 +41,17 @@
         android:id="@+id/resetScoreButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/pragya"
+        android:textSize="20sp"
         android:text="@string/reset_high_score" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/pragya"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         android:text="@string/difficult" />
 
     <Spinner
@@ -43,6 +64,9 @@
         android:id="@+id/soundEffectsCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/pragya"
+        android:textSize="19sp"
+        android:textColor="@color/white"
         android:text="@string/enable_sound_effects"
         android:layout_marginTop="8dp"
         android:onClick="onCheckBoxClicked" />
@@ -51,6 +75,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/pragya"
+        android:textSize="20sp"
+
         android:layout_marginBottom="8dp"
         android:text="@string/special_bricks" />
 
@@ -58,6 +86,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/pragya"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
         android:drawablePadding="8dp"
         android:drawableLeft="@drawable/explosive_brick"
         android:text="@string/explosive_brick_explanation"
@@ -68,6 +100,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/pragya"
+        android:textSize="16sp"
         android:drawablePadding="8dp"
         android:drawableLeft="@drawable/moveable_brick"
         android:text="@string/moveable_brick_explanation"
@@ -78,9 +114,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/pragya"
+        android:textSize="16sp"
         android:drawablePadding="8dp"
         android:drawableLeft="@drawable/hard_brick"
         android:text="@string/hard_brick_explanation"
         android:layout_marginStart="8dp"
         android:drawableStart="@drawable/hard_brick" />
+
+    <TextView
+        android:id="@+id/madeBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_margin="30dp"
+        android:fontFamily="@font/pragya"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:text="Finally you're here!"/>
 </TableLayout>

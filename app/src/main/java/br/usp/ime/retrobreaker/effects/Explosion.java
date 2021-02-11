@@ -7,9 +7,7 @@ import br.usp.ime.retrobreaker.forms.Particle;
 import br.usp.ime.retrobreaker.game.Constants.Color;
 
 /**
- * @author impaler
- * http://obviam.net/index.php/particle-explosion-with-android/
- *
+ * @author the-rebooted-coder
  */
 public class Explosion {
 
