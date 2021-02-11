@@ -52,5 +52,5 @@ dependencies {
     implementation 'com.synnapps:carouselview:0.1.5'
 
     //Card View
-    implementation 'com.ramotion.cardslider:card-slider:0.3.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
 }

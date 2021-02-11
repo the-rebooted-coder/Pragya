@@ -4,13 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< Updated upstream
     android:background="@color/retro_red"
-    tools:context=".AboutPragya"/>
-=======
     tools:context=".AboutPragya">
-
-
     <ScrollView
         android:id="@+id/Aboutpragya"
         android:layout_width="match_parent"
@@ -35,6 +30,4 @@
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
->>>>>>> Stashed changes
