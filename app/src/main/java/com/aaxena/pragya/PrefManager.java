@@ -23,7 +23,7 @@ public class PrefManager {
     public PrefManager(Context context) {
         this._context = context;
         pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
-        editor = pref.edit();
+        editor = pref.edit(); 
     }
 
     public void setFirstTimeLaunch(boolean isFirstTime) {

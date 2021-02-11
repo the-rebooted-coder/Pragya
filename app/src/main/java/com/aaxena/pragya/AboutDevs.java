@@ -10,48 +10,47 @@ import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.KeyEvent;
-import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 
-public class SignUp extends AppCompatActivity {
-    private GoogleSignInClient mGoogleSignInClient;
-    private String TAG = "Login";
-    private FirebaseAuth mAuth;
+public class AboutDevs extends AppCompatActivity {
     private static final String PREFS_NAME = "Vibration";
-    private int RC_SIGN_IN =1;
     String TEXT = "text";
+    CarouselView carouselView;
+    TextView textView;
 
+    int[] sampleImages = {R.drawable.spandan,R.drawable.shrish,R.drawable.shubham,R.drawable.sriniv};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
-        Button signInButton = findViewById(R.id.sign_in_button);
-        mAuth = FirebaseAuth.getInstance();
+        setContentView(R.layout.activity_about_devs);
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
-        signInButton.setOnClickListener(v -> {
-            vibrateDevice();
-            signIn();
-        });
+        carouselView = findViewById(R.id.carouselView);
+        carouselView.setPageCount(sampleImages.length);
+        carouselView.setImageListener(imageListener);
     }
+    ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            imageView.setImageResource(sampleImages[position]);
+            for (int i=0; i<sampleImages.length; i++) {
+                if (sampleImages[i] == 0)
+                    textView.setText("Spandan Saxena");
+                else if (sampleImages[i] == 1)
+                    textView.setText("Shrish Sharma");
+                else if (sampleImages[i] == 2)
+                    textView.setText("Shubham Munjani");
+                else if (sampleImages[i] == 3)
+                    textView.setText("Srinivasan Bashyam");
+            }
+        }
+    };
 
     private void vibrateDevice() {
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
@@ -70,49 +69,6 @@ public class SignUp extends AppCompatActivity {
             Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             v3.vibrate(0);
         }
-    }
-
-    private void signIn(){
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent,RC_SIGN_IN);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN){
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
-        }
-    }
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
-        try {
-            GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
-            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-            if (account !=null){
-                Intent i=new Intent(SignUp.this,Landing.class);
-                startActivity(i);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                finish();
-            }
-            FirebaseGoogleAuth(acc);
-        }
-        catch (ApiException e){
-            Toast.makeText(SignUp.this,"Something Went Wrong",Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void FirebaseGoogleAuth(GoogleSignInAccount acct){
-        AuthCredential authCredential = GoogleAuthProvider.getCredential(acct.getIdToken(),null);
-        mAuth.signInWithCredential(authCredential).addOnCompleteListener(this, task -> {
-            if (task.isSuccessful()){
-                FirebaseUser user = mAuth.getCurrentUser();
-            }
-            else {
-                Toast.makeText(SignUp.this,"You cached a bug!",Toast.LENGTH_SHORT).show();
-                recreate();
-            }
-        });
     }
     @SuppressLint("ApplySharedPref")
     @Override
@@ -153,5 +109,14 @@ public class SignUp extends AppCompatActivity {
             default:
                 return super.dispatchKeyEvent(event);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent toLanding = new Intent(AboutDevs.this,Landing.class);
+        startActivity (toLanding);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
     }
 }

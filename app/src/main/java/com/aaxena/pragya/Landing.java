@@ -10,49 +10,67 @@ import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.KeyEvent;
-import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
-
-public class SignUp extends AppCompatActivity {
-    private GoogleSignInClient mGoogleSignInClient;
-    private String TAG = "Login";
-    private FirebaseAuth mAuth;
+public class Landing extends AppCompatActivity {
     private static final String PREFS_NAME = "Vibration";
-    private int RC_SIGN_IN =1;
     String TEXT = "text";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
-        Button signInButton = findViewById(R.id.sign_in_button);
-        mAuth = FirebaseAuth.getInstance();
-
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
-        signInButton.setOnClickListener(v -> {
-            vibrateDevice();
-            signIn();
-        });
+        setContentView(R.layout.activity_landing);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
     }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId())
+        {
+            case R.id.settings:
+                vibrateDevice();
+                Intent toSettings = new Intent(Landing.this,Settings.class);
+                startActivity(toSettings);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
+                break;
+            case R.id.devs:
+                vibrateDevice();
+                Intent toDevs = new Intent(Landing.this,AboutDevs.class);
+                startActivity(toDevs);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
+                break;
+            case R.id.about:
+                vibrateDevice();
+                Intent toAboutPragya = new Intent(Landing.this,AboutPragya.class);
+                startActivity(toAboutPragya);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
+                break;
+            case R.id.profile:
+                vibrateDevice();
+                Intent toProfile = new Intent(Landing.this,UserInfo.class);
+                startActivity(toProfile);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
+                break;
+        }
+        return true;
+    }
     private void vibrateDevice() {
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         String vibration_setting = sharedPreferences.getString(TEXT,"on");
@@ -70,49 +88,6 @@ public class SignUp extends AppCompatActivity {
             Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             v3.vibrate(0);
         }
-    }
-
-    private void signIn(){
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent,RC_SIGN_IN);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN){
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
-        }
-    }
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
-        try {
-            GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
-            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-            if (account !=null){
-                Intent i=new Intent(SignUp.this,Landing.class);
-                startActivity(i);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                finish();
-            }
-            FirebaseGoogleAuth(acc);
-        }
-        catch (ApiException e){
-            Toast.makeText(SignUp.this,"Something Went Wrong",Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void FirebaseGoogleAuth(GoogleSignInAccount acct){
-        AuthCredential authCredential = GoogleAuthProvider.getCredential(acct.getIdToken(),null);
-        mAuth.signInWithCredential(authCredential).addOnCompleteListener(this, task -> {
-            if (task.isSuccessful()){
-                FirebaseUser user = mAuth.getCurrentUser();
-            }
-            else {
-                Toast.makeText(SignUp.this,"You cached a bug!",Toast.LENGTH_SHORT).show();
-                recreate();
-            }
-        });
     }
     @SuppressLint("ApplySharedPref")
     @Override

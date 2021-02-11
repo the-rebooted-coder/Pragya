@@ -1,4 +1,36 @@
 <resources>
     <string name="app_name">Pragya</string>
     <string name="start">START</string>
+    <string name="sign_in">Continue with Google</string>
+    <string name="about_devs">About Devs</string>
+    <string name="settings">Settings</string>
+    <string name="about_developers">Developers</string>
+    <string name="about">About Pragya</string>
+    <string name="my_profile">My Profile</string>
+    <string name="long_splash">BIOS Startup</string>
+    <string name="switch_on">Switch On</string>
+    <string name="abt_user">User</string>
+    <string name="tip_about_vibrations">Tip: You can disable system vibrations from anywhere in the app by simply pressing the volume up and down buttons once!</string>
+    <string name="image_of_retro_switch">Image of Retro Switch</string>
+    <string-array name="loading_msg">
+        <item>Choosing Between The Blue and Red Pill</item>
+        <item>Filling Pot with Stones</item>
+        <item>Melting the Chocolate</item>
+        <item>Downloading more RAM…</item>
+        <item>the beginning is the end…</item>
+        <item>…and the end is the beginning</item>
+        <item>We\'re building the buildings as fast as we can</item>
+        <item>Counting backwards from Infinity…</item>
+        <item>Warning: Don\'t set yourself on fire.</item>
+        <item>Adjusting flux capacitor…</item>
+        <item>Spinning the hamster…</item>
+        <item>Winter is coming…</item>
+        <item>Downloading more RAM..</item>
+        <item>Pushing pixels…</item>
+        <item>Still faster than Windows update</item>
+        <item>Travelling through time…</item>
+        <item>Thinking Of an Offer Which You Can\'t Refuse</item>
+        <item>Making the Cat Meow</item>
+        <item>Making the Earth Flat</item>
+    </string-array>
 </resources>
