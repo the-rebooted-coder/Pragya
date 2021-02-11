@@ -16,9 +16,16 @@ public class AboutPragya extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_pragya);
 
-        txtmarquee=(ScrollView) findViewById(R.id.Aboutpragya);
+        /*txtmarquee=(ScrollView) findViewById(R.id.Aboutpragya);
         txtmarquee.setSelected(true);
-
+*/
+        final ScrollView scrollview = ((ScrollView) findViewById(R.id.Aboutpragya));
+        scrollview.post(new Runnable() {
+            @Override
+            public void run() {
+                scrollview.fullScroll(ScrollView.FOCUS_DOWN);
+            }
+        });
     }
 
     @Override
