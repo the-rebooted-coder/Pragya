@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     android:background="@color/retro_red"
     tools:context=".AboutPragya">
+
     <ScrollView
         android:id="@+id/Aboutpragya"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -23,11 +24,13 @@
 
             <TextView
                 android:id="@+id/act_test_description"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="60dp"
                 android:text=" Scrollview can have only one child element, like a vertical linearlayout for instance. Then your other views will be child elements of the linearlayout. I think you must create a scrollview, then add a vertical layout in that scrollview. After that, you can add textview, button or anything you want."
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="40dp" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
