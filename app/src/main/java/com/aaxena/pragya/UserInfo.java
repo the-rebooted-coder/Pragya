@@ -51,7 +51,7 @@ public class UserInfo extends AppCompatActivity {
         logout.setOnClickListener(new DoubleClick(new DoubleClickListener() {
             @Override
             public void onSingleClick(View view) {
-                Toast.makeText(UserInfo.this,"Press twice to Logout!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserInfo.this,"Tap twice to Logout!",Toast.LENGTH_SHORT).show();
             }
 
             @Override

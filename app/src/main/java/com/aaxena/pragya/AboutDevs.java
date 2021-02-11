@@ -10,6 +10,8 @@ import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.KeyEvent;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -26,19 +28,72 @@ public class AboutDevs extends AppCompatActivity {
     Adapter adapter;
     List<Model> models;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_devs);
+        viewPager = findViewById(R.id.viewPager);
+
+        TextView terminal = findViewById(R.id.terminal);
+        terminal.setVisibility(View.VISIBLE);
+        viewPager.setVisibility(View.INVISIBLE);
+        int splash_screen_short = 100;
+        new Handler().postDelayed(() -> {
+            terminal.setText("->JUETPragya % d_");
+        }, splash_screen_short);
+        int splash_screen_short1 = 300;
+        new Handler().postDelayed(() -> {
+            terminal.setText("->JUETPragya % de_");
+        }, splash_screen_short1);
+        int splash_screen_short2 = 600;
+        new Handler().postDelayed(() -> {
+            terminal.setText("->JUETPragya % dev_");
+        }, splash_screen_short2);
+        int splash_screen_short3 = 900;
+        new Handler().postDelayed(() -> {
+            terminal.setText("->JUETPragya % deve_");
+        }, splash_screen_short3);
+        int splash_screen_short4 = 1200;
+        new Handler().postDelayed(() -> {
+            terminal.setText("->JUETPragya % devel_");
+        }, splash_screen_short4);
+        int splash_screen_short5 = 1500;
+        new Handler().postDelayed(() -> {
+            terminal.setText("->JUETPragya % develo_");
+        }, splash_screen_short5);
+        int splash_screen_short6 = 1800;
+        new Handler().postDelayed(() -> {
+            terminal.setText("->JUETPragya % develop_");
+        }, splash_screen_short6);
+        int splash_screen_short7 = 2100;
+        new Handler().postDelayed(() -> {
+            terminal.setText("->JUETPragya % develope_");
+        }, splash_screen_short7);
+        int splash_screen_short8 = 2400;
+        new Handler().postDelayed(() -> {
+            terminal.setText("->JUETPragya % developers_");
+        }, splash_screen_short8);
+        int splash_screen_short9 = 2700;
+        new Handler().postDelayed(() -> {
+            terminal.setText("->JUETPragya % developers\n\n_");
+        }, splash_screen_short9);
+        int splash_screen_short10 = 2900;
+        new Handler().postDelayed(() -> {
+            terminal.setText("->JUETPragya % developers\n\n_");
+            terminal.setVisibility(View.INVISIBLE);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            viewPager.setVisibility(View.VISIBLE);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        }, splash_screen_short10);
+
         models = new ArrayList<>();
         models.add(new Model(R.drawable.spandan, "Spandan Saxena", "BackEnd Developer","Developers"));
         models.add(new Model(R.drawable.shrish, "Shrish Sharma", "UI and UX","are just"));
         models.add(new Model(R.drawable.sriniv, "Srinivasan Bashyam", "Code Watcher","tools that transform"));
-        models.add(new Model(R.drawable.shubham, "Shubham Munjani", "Code Slider","caffeine to code"));
+        models.add(new Model(R.drawable.shubham, "Shubham Munjani", "Text Slider","caffeine to code"));
 
         adapter = new Adapter(models, this);
-
-        viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(adapter);
     }
 
