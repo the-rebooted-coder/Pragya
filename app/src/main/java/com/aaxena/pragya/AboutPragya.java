@@ -4,26 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.ScrollView;
-import android.widget.TextView;
 
 public class AboutPragya extends AppCompatActivity {
 
-    ScrollView txtmarquee;
+    ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_pragya);
-
-        /*txtmarquee=(ScrollView) findViewById(R.id.Aboutpragya);
-        txtmarquee.setSelected(true);
-*/
-        final ScrollView scrollview = ((ScrollView) findViewById(R.id.Aboutpragya));
-        scrollview.post(new Runnable() {
+        scrollView = findViewById(R.id.about_pragya);
+        Handler handler = new Handler();
+        scrollView.post(new Runnable() {
             @Override
             public void run() {
-                scrollview.fullScroll(ScrollView.FOCUS_DOWN);
+                scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                handler.postDelayed(this, 1000);
             }
         });
     }

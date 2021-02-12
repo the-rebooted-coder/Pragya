@@ -7,15 +7,28 @@
     android:background="@color/retro_red"
     tools:context=".AboutPragya">
 
-    <ScrollView
-        android:id="@+id/Aboutpragya"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:fontFamily="@font/pragya"
+        android:text="About Pragya"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/about_pragya"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.28" />
+
+    <ScrollView
+        android:id="@+id/about_pragya"
+        android:layout_width="407dp"
+        android:layout_height="576dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,16 +36,16 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/act_test_description"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_long"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginTop="60dp"
                 android:fontFamily="@font/pragya"
+                android:text="@string/about_placeholder"
+                android:textAlignment="center"
                 android:textColor="@color/white"
-                android:text=" Scrollview can have only one child element, like a vertical linearlayout for instance. Then your other views will be child elements of the linearlayout. I think you must create a scrollview, then add a vertical layout in that scrollview. After that, you can add textview, button or anything you want."
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="40dp" />
-
+                android:textSize="20sp" />
         </LinearLayout>
     </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
