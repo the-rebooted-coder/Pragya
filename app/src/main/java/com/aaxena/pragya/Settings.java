@@ -1,7 +1,5 @@
 package com.aaxena.pragya;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -13,10 +11,11 @@ import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.KeyEvent;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import br.usp.ime.retrobreaker.WrapperActivity;
 
@@ -64,44 +63,41 @@ public class Settings extends AppCompatActivity {
             }
         });
         Button startEaster = findViewById(R.id.startEaster);
-        startEaster.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickcount=clickcount+1;
-                if(clickcount==1)
-                {
-                    Toast.makeText(getApplicationContext(),"Hey Did You Found Something?", Toast.LENGTH_SHORT).show();
-                }
-                else if (clickcount==2)
-                {
-                    Toast.makeText(getApplicationContext(),"Come on, there is nothing here", Toast.LENGTH_SHORT).show();
-                }
-                else if (clickcount==3)
-                {
-                    Toast.makeText(getApplicationContext(),"You are not going right?", Toast.LENGTH_SHORT).show();
-                }else if (clickcount==4)
-                {
-                    Toast.makeText(getApplicationContext(),"Well, is this clicking thing amusing you?", Toast.LENGTH_SHORT).show();
-                }
-                else if (clickcount==5)
-                {
-                    Toast.makeText(getApplicationContext(),"Stop right there!", Toast.LENGTH_SHORT).show();
-                }
-                else if (clickcount==6)
-                {
-                    Toast.makeText(getApplicationContext(),"If I was you, I would have stopped", Toast.LENGTH_SHORT).show();
-                }
-                else if (clickcount==7)
-                {
-                    Toast.makeText(getApplicationContext(),"Ok here take the key" + ("\uD83D\uDD11"), Toast.LENGTH_SHORT).show();
-                }
-                else if (clickcount==8)
-                {
-                    vibrateDevice();
-                    Toast.makeText(getApplicationContext(),"Pragya, Developed by One Silicon Diode ;)", Toast.LENGTH_LONG).show();
-                    Intent toGame = new Intent(Settings.this, WrapperActivity.class);
-                    startActivity(toGame);
-                }
+        startEaster.setOnClickListener(v -> {
+            clickcount=clickcount+1;
+            if(clickcount==1) {
+                Toast.makeText(getApplicationContext(), "Hey Did You Found Something?", Toast.LENGTH_SHORT).show();
+            }
+            else if (clickcount==2)
+            {
+                Toast.makeText(getApplicationContext(),"Come on, there is nothing here", Toast.LENGTH_SHORT).show();
+            }
+            else if (clickcount==3)
+            {
+                Toast.makeText(getApplicationContext(),"You are not going right?", Toast.LENGTH_SHORT).show();
+            }else if (clickcount==4)
+            {
+                Toast.makeText(getApplicationContext(),"Well, is this clicking thing amusing you?", Toast.LENGTH_SHORT).show();
+            }
+            else if (clickcount==5)
+            {
+                Toast.makeText(getApplicationContext(),"Stop right there!", Toast.LENGTH_SHORT).show();
+            }
+            else if (clickcount==6)
+            {
+                Toast.makeText(getApplicationContext(),"If I was you, I would have stopped", Toast.LENGTH_SHORT).show();
+            }
+            else if (clickcount==7)
+            {
+                Toast.makeText(getApplicationContext(),"Ok here take the key " + ("\uD83D\uDD11"), Toast.LENGTH_SHORT).show();
+            }
+            else if (clickcount==8)
+            {
+                clickcount = 0;
+                vibrateDevice();
+                Toast.makeText(getApplicationContext(),"Pragya, Developed by One Silicon Diode ;)", Toast.LENGTH_LONG).show();
+                Intent toGame = new Intent(Settings.this, WrapperActivity.class);
+                startActivity(toGame);
             }
         });
     }
