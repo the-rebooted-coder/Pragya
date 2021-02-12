@@ -27,6 +27,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="60dp"
+                android:fontFamily="@font/pragya"
+                android:textColor="@color/white"
                 android:text=" Scrollview can have only one child element, like a vertical linearlayout for instance. Then your other views will be child elements of the linearlayout. I think you must create a scrollview, then add a vertical layout in that scrollview. After that, you can add textview, button or anything you want."
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textSize="40dp" />
