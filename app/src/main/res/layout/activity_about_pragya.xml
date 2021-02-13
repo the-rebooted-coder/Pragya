@@ -28,7 +28,6 @@
                 android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pragya"
-                android:scrollHorizontally="true"
                 android:text="@string/about_placeholder"
                 android:textAlignment="center"
                 android:textColor="@color/white"

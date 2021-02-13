@@ -50,7 +50,4 @@ dependencies {
 
     //Card View
     implementation 'androidx.cardview:cardview:1.0.0'
-
-    //About
-    implementation 'com.github.akndmr:AboutScreen:1.0.1-beta'
 }

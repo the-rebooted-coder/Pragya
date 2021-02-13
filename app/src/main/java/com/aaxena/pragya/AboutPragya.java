@@ -11,8 +11,9 @@ public class AboutPragya extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_pragya);
-    }
 
+    }
+    
     @Override
     public void onBackPressed() {
         super.onBackPressed();
