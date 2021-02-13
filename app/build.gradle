@@ -52,5 +52,4 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
 
     //About Us Page
-    implementation 'com.github.p32929:MaterialOfficeAbout:1.0.5'
 }

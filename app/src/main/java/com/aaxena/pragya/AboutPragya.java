@@ -1,22 +1,17 @@
 package com.aaxena.pragya;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.widget.ScrollView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AboutPragya extends AppCompatActivity {
-
-    ScrollView scrollView;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_pragya);
-
-        scrollView = findViewById(R.id.about_pragya);
     }
 
     @Override
