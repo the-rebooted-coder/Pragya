@@ -109,7 +109,7 @@ public abstract class CameraActivity extends AppCompatActivity
   private Model model = Model.FLOAT;
   private Device device = Device.CPU;
   private int numThreads = -1;
-   MediaPlayer mp,mp1,mp2;
+   MediaPlayer mp,mp1,mp2,mp3,mp4,mp5,mp6;
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     LOGGER.d("onCreate " + this);
@@ -344,8 +344,13 @@ public abstract class CameraActivity extends AppCompatActivity
     handlerThread.start();
     handler = new Handler(handlerThread.getLooper());
 
-    mp = MediaPlayer.create(this, R.raw.hundred);
+    mp = MediaPlayer.create(this, R.raw.twothou);
     mp1 = MediaPlayer.create(this, R.raw.ten);
+    mp2 = MediaPlayer.create(this,R.raw.twen);
+    mp3 = MediaPlayer.create(this,R.raw.fifty);
+    mp4 = MediaPlayer.create(this,R.raw.hundred);
+    mp5 = MediaPlayer.create(this,R.raw.two);
+    mp6 = MediaPlayer.create(this,R.raw.fivehun);
  /*   mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
       @Override
       public void onCompletion(MediaPlayer mp) {
@@ -549,9 +554,14 @@ public abstract class CameraActivity extends AppCompatActivity
         return 0;
     }
   }
-boolean hun = false;
-  boolean five = false;
-  boolean ten = false;
+boolean ten = false;
+  boolean twen = false;
+  boolean fifty = false;
+  boolean twothou = false;
+  boolean hundred = false;
+  boolean fivehun = false;
+  boolean two = false;
+
   @UiThread
   protected void showResultsInBottomSheet(List<Recognition> results) {
 
@@ -564,22 +574,71 @@ boolean hun = false;
                   String.format("%.2f", (100 * recognition.getConfidence())) + "%");
         float confi = 100 * recognition.getConfidence();
         try {
-          if (!five && recognitionTextView.getText().toString().equalsIgnoreCase("500") && confi>99 ) {
-            mp2.start();
-            five =true;
-            ten = false;
-            hun = false;
-          } else if (!hun&& recognitionTextView.getText().toString().equalsIgnoreCase("100")&& confi>99) {
-            mp.start();
-            hun = true;
-            five =false;
-            ten = false;
-          } else if (!ten&&recognitionTextView.getText().toString().equalsIgnoreCase("10")&& confi>90 ) {
+          if (!ten && recognitionTextView.getText().toString().contains("10") && confi>90 ) {
             mp1.start();
-            ten  =true;
-            five =false;
-            hun = false;
+            ten =true;
+            fifty = false;
+            twen = false;
+            twothou = false;
+            hundred = false;
+            fivehun = false;
+            two = false;
+          } else if (!twen&& recognitionTextView.getText().toString().contains("20")&& confi>90) {
+            mp2.start();
+            ten =false;
+            fifty = false;
+            twen = true;
+            twothou = false;
+            hundred = false;
+            fivehun = false;
+            two = false;
+          } else if (!fifty&&recognitionTextView.getText().toString().contains("50")&& confi>90 ) {
+            mp3.start();
+            ten =false;
+            fifty = true;
+            twen = false;
+            twothou = false;
+            hundred = false;
+            fivehun = false;
+            two = false;
+          }else if (!twothou&&recognitionTextView.getText().toString().contains("2000")&& confi>90 ) {
+            mp.start();
+            ten =false;
+            fifty = false;
+            twen = false;
+            twothou = true;
+            hundred = false;
+            fivehun = false;
+            two = false;
+          }else if (!hundred&&recognitionTextView.getText().toString().contains("100")&& confi>90 ) {
+            mp4.start();
+            ten =false;
+            fifty = false;
+            twen = false;
+            twothou = false;
+            hundred = true;
+            fivehun = false;
+            two = false;
+          }else if (!fivehun&&recognitionTextView.getText().toString().contains("500")&& confi>90 ) {
+            mp6.start();
+            ten =false;
+            fifty = false;
+            twen = false;
+            twothou = false;
+            hundred = false;
+            fivehun = true;
+            two = false;
+          }else if (!two&&recognitionTextView.getText().toString().contains("200")&& confi>90 ) {
+            mp5.start();
+            ten =false;
+            fifty = false;
+            twen = false;
+            twothou = false;
+            hundred = false;
+            fivehun = false;
+            two = true;
           }
+
         }catch (Exception e){
           e.printStackTrace();
         }
