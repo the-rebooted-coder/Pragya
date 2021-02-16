@@ -18,6 +18,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import org.tensorflow.lite.examples.classification.ClassifierActivity;
+
 public class Landing extends AppCompatActivity {
     private static final String PREFS_NAME = "Vibration";
     String TEXT = "text";
@@ -28,6 +30,9 @@ public class Landing extends AppCompatActivity {
         setContentView(R.layout.activity_landing);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
+        Intent toClassify = new Intent(this, ClassifierActivity.class);
+        startActivity(toClassify);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -3,6 +3,9 @@
     package="com.aaxena.pragya">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -11,12 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pragya">
-        <activity android:name="br.usp.ime.retrobreaker.WrapperActivity"></activity>
+        <activity android:name="br.usp.ime.retrobreaker.WrapperActivity"/>
         <activity android:name="br.usp.ime.retrobreaker.GameActivity" />
         <activity android:name=".AboutPragya" />
         <activity android:name=".UserInfo" />
         <activity android:name=".Settings" />
         <activity android:name=".Landing" />
+        <activity android:name="org.tensorflow.lite.examples.classification.ClassifierActivity"/>
         <activity android:name=".AboutDevs" />
         <activity android:name=".SignUp" />
         <activity android:name=".SplashScreenShort" />
