@@ -90,8 +90,6 @@ public abstract class CameraActivity extends AppCompatActivity
   protected int previewWidth = 0;
   protected int previewHeight = 0;
   private Handler handler;
-  private static final String PREFS_NAME = "Vibration";
-  String TEXT = "text";
   private HandlerThread handlerThread;
   private boolean useCamera2API;
   private boolean isProcessingFrame = false;
@@ -358,24 +356,6 @@ public abstract class CameraActivity extends AppCompatActivity
     mp4 = MediaPlayer.create(this,R.raw.hundred);
     mp5 = MediaPlayer.create(this,R.raw.two);
     mp6 = MediaPlayer.create(this,R.raw.fivehun);
- /*   mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-      @Override
-      public void onCompletion(MediaPlayer mp) {
-        mp.release();
-      }
-    });
-    mp1.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-      @Override
-      public void onCompletion(MediaPlayer mp) {
-        mp.release();
-      }
-    });
-    mp2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-      @Override
-      public void onCompletion(MediaPlayer mp) {
-        mp.release();
-      }
-    });*/
   }
 
   @Override
@@ -421,10 +401,6 @@ public abstract class CameraActivity extends AppCompatActivity
     return true;
   }
   private void vibrateDevice() {
-    SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-    String vibration_setting = sharedPreferences.getString(TEXT,"on");
-
-    if(vibration_setting.equals("on")) {
       Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         v3.vibrate(VibrationEffect.createOneShot(28, VibrationEffect.DEFAULT_AMPLITUDE));
@@ -433,51 +409,6 @@ public abstract class CameraActivity extends AppCompatActivity
         v3.vibrate(25);
       }
     }
-    else {
-      Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-      v3.vibrate(0);
-    }
-  }
-  @SuppressLint("ApplySharedPref")
-  @Override
-  public boolean dispatchKeyEvent(KeyEvent event) {
-    int action = event.getAction();
-    int keyCode = event.getKeyCode();
-    switch (keyCode) {
-      case KeyEvent.KEYCODE_VOLUME_UP:
-        if (action == KeyEvent.ACTION_DOWN) {
-          SharedPreferences settings = this.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-          SharedPreferences.Editor editor = settings.edit();
-          editor.putString(TEXT, "on");
-          editor.commit();
-          Toast.makeText(this,"Vibrations Turned On",Toast.LENGTH_SHORT).show();
-        }
-        return true;
-      case KeyEvent.KEYCODE_VOLUME_DOWN:
-        if (action == KeyEvent.ACTION_DOWN) {
-          vibrateDevice();
-          int vib_delay = 100;
-          new Handler().postDelayed(() -> {
-            Vibrator v4 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-              v4.vibrate(VibrationEffect.createOneShot(35, VibrationEffect.DEFAULT_AMPLITUDE));
-            } else {
-              //deprecated in API 26
-              v4.vibrate(30);
-            }
-          }, vib_delay);
-          SharedPreferences settings = this.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-          SharedPreferences.Editor editor = settings.edit();
-          editor.putString(TEXT, "off");
-          editor.commit();
-          Toast.makeText(this,"Vibrations Turned Off",Toast.LENGTH_SHORT).show();
-
-        }
-        return true;
-      default:
-        return super.dispatchKeyEvent(event);
-    }
-  }
 
   @Override
   public synchronized void onPause() {
