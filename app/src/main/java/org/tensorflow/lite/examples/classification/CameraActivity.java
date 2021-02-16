@@ -574,7 +574,7 @@ boolean ten = false;
                   String.format("%.2f", (100 * recognition.getConfidence())) + "%");
         float confi = 100 * recognition.getConfidence();
         try {
-          if (!ten && recognitionTextView.getText().toString().contains("10") && confi>90 ) {
+          if (!ten && recognitionTextView.getText().toString().contains("10") && confi>99 ) {
             mp1.start();
             ten =true;
             fifty = false;
@@ -583,7 +583,7 @@ boolean ten = false;
             hundred = false;
             fivehun = false;
             two = false;
-          } else if (!twen&& recognitionTextView.getText().toString().contains("20")&& confi>90) {
+          } else if (!twen&& recognitionTextView.getText().toString().contains("20")&& confi>99) {
             mp2.start();
             ten =false;
             fifty = false;
@@ -592,7 +592,7 @@ boolean ten = false;
             hundred = false;
             fivehun = false;
             two = false;
-          } else if (!fifty&&recognitionTextView.getText().toString().contains("50")&& confi>90 ) {
+          } else if (!fifty&&recognitionTextView.getText().toString().contains("50")&& confi>99 ) {
             mp3.start();
             ten =false;
             fifty = true;
@@ -601,7 +601,7 @@ boolean ten = false;
             hundred = false;
             fivehun = false;
             two = false;
-          }else if (!twothou&&recognitionTextView.getText().toString().contains("2000")&& confi>90 ) {
+          }else if (!twothou&&recognitionTextView.getText().toString().contains("2000")&& confi>99 ) {
             mp.start();
             ten =false;
             fifty = false;
@@ -610,7 +610,7 @@ boolean ten = false;
             hundred = false;
             fivehun = false;
             two = false;
-          }else if (!hundred&&recognitionTextView.getText().toString().contains("100")&& confi>90 ) {
+          }else if (!hundred&&recognitionTextView.getText().toString().contains("100")&& confi>99 ) {
             mp4.start();
             ten =false;
             fifty = false;
@@ -628,7 +628,7 @@ boolean ten = false;
             hundred = false;
             fivehun = true;
             two = false;
-          }else if (!two&&recognitionTextView.getText().toString().contains("200")&& confi>90 ) {
+          }else if (!two&&recognitionTextView.getText().toString().contains("200")&& confi>99 ) {
             mp5.start();
             ten =false;
             fifty = false;
