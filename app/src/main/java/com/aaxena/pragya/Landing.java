@@ -28,11 +28,8 @@ public class Landing extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-
-        Intent toClassify = new Intent(this, ClassifierActivity.class);
-        startActivity(toClassify);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
