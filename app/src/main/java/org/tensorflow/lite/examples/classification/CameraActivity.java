@@ -17,8 +17,11 @@
 package org.tensorflow.lite.examples.classification;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
@@ -35,7 +38,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Trace;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.Size;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -52,7 +61,11 @@ import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.aaxena.pragya.AboutDevs;
+import com.aaxena.pragya.AboutPragya;
 import com.aaxena.pragya.R;
+import com.aaxena.pragya.Settings;
+import com.aaxena.pragya.UserInfo;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import org.tensorflow.lite.examples.classification.env.ImageUtils;
@@ -77,6 +90,8 @@ public abstract class CameraActivity extends AppCompatActivity
   protected int previewWidth = 0;
   protected int previewHeight = 0;
   private Handler handler;
+  private static final String PREFS_NAME = "Vibration";
+  String TEXT = "text";
   private HandlerThread handlerThread;
   private boolean useCamera2API;
   private boolean isProcessingFrame = false;
@@ -210,14 +225,6 @@ public abstract class CameraActivity extends AppCompatActivity
   protected int[] getRgbBytes() {
     imageConverter.run();
     return rgbBytes;
-  }
-
-  protected int getLuminanceStride() {
-    return yRowStride;
-  }
-
-  protected byte[] getLuminance() {
-    return yuvBytes[0];
   }
 
   /** Callback for android.hardware.Camera API */
@@ -369,6 +376,107 @@ public abstract class CameraActivity extends AppCompatActivity
         mp.release();
       }
     });*/
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.menu, menu);
+    return true;
+  }
+  @SuppressLint("NonConstantResourceId")
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch(item.getItemId())
+    {
+      case R.id.settings:
+        vibrateDevice();
+        Intent toSettings = new Intent(this, Settings.class);
+        startActivity(toSettings);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
+        break;
+      case R.id.devs:
+        vibrateDevice();
+        Intent toDevs = new Intent(this, AboutDevs.class);
+        startActivity(toDevs);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
+        break;
+      case R.id.about:
+        vibrateDevice();
+        Intent toAboutPragya = new Intent(this, AboutPragya.class);
+        startActivity(toAboutPragya);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
+        break;
+      case R.id.profile:
+        vibrateDevice();
+        Intent toProfile = new Intent(this, UserInfo.class);
+        startActivity(toProfile);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
+        break;
+    }
+    return true;
+  }
+  private void vibrateDevice() {
+    SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+    String vibration_setting = sharedPreferences.getString(TEXT,"on");
+
+    if(vibration_setting.equals("on")) {
+      Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        v3.vibrate(VibrationEffect.createOneShot(28, VibrationEffect.DEFAULT_AMPLITUDE));
+      } else {
+        //deprecated in API 26
+        v3.vibrate(25);
+      }
+    }
+    else {
+      Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+      v3.vibrate(0);
+    }
+  }
+  @SuppressLint("ApplySharedPref")
+  @Override
+  public boolean dispatchKeyEvent(KeyEvent event) {
+    int action = event.getAction();
+    int keyCode = event.getKeyCode();
+    switch (keyCode) {
+      case KeyEvent.KEYCODE_VOLUME_UP:
+        if (action == KeyEvent.ACTION_DOWN) {
+          SharedPreferences settings = this.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+          SharedPreferences.Editor editor = settings.edit();
+          editor.putString(TEXT, "on");
+          editor.commit();
+          Toast.makeText(this,"Vibrations Turned On",Toast.LENGTH_SHORT).show();
+        }
+        return true;
+      case KeyEvent.KEYCODE_VOLUME_DOWN:
+        if (action == KeyEvent.ACTION_DOWN) {
+          vibrateDevice();
+          int vib_delay = 100;
+          new Handler().postDelayed(() -> {
+            Vibrator v4 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+              v4.vibrate(VibrationEffect.createOneShot(35, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+              //deprecated in API 26
+              v4.vibrate(30);
+            }
+          }, vib_delay);
+          SharedPreferences settings = this.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+          SharedPreferences.Editor editor = settings.edit();
+          editor.putString(TEXT, "off");
+          editor.commit();
+          Toast.makeText(this,"Vibrations Turned Off",Toast.LENGTH_SHORT).show();
+
+        }
+        return true;
+      default:
+        return super.dispatchKeyEvent(event);
+    }
   }
 
   @Override

@@ -19,7 +19,6 @@
         <activity android:name=".AboutPragya" />
         <activity android:name=".UserInfo" />
         <activity android:name=".Settings" />
-        <activity android:name=".Landing" />
         <activity android:name="org.tensorflow.lite.examples.classification.ClassifierActivity"/>
         <activity android:name=".AboutDevs" />
         <activity android:name=".SignUp" />

@@ -25,6 +25,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.pedromassango.doubleclick.DoubleClick;
 import com.pedromassango.doubleclick.DoubleClickListener;
 
+import org.tensorflow.lite.examples.classification.ClassifierActivity;
+
 /*
 Bit by Bit Information
 @author Spandan Saxena aka the-rebooted-coder
@@ -135,7 +137,7 @@ public class UserInfo extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent toLanding = new Intent(UserInfo.this,Landing.class);
+        Intent toLanding = new Intent(UserInfo.this, ClassifierActivity.class);
         startActivity (toLanding);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();
