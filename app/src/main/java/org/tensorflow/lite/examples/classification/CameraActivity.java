@@ -613,43 +613,7 @@ boolean ten = false;
                   String.format("%.2f", (100 * recognition.getConfidence())) + "%");
         float confi = 100 * recognition.getConfidence();
         try {
-          if (!ten && recognitionTextView.getText().toString().contains("10") && confi>99 ) {
-            mp1.start();
-            ten =true;
-            fifty = false;
-            twen = false;
-            twothou = false;
-            hundred = false;
-            fivehun = false;
-            two = false;
-          } else if (!twen&& recognitionTextView.getText().toString().contains("20")&& confi>99) {
-            mp2.start();
-            ten =false;
-            fifty = false;
-            twen = true;
-            twothou = false;
-            hundred = false;
-            fivehun = false;
-            two = false;
-          } else if (!fifty&&recognitionTextView.getText().toString().contains("50")&& confi>99 ) {
-            mp3.start();
-            ten =false;
-            fifty = true;
-            twen = false;
-            twothou = false;
-            hundred = false;
-            fivehun = false;
-            two = false;
-          }else if (!twothou&&recognitionTextView.getText().toString().contains("2000")&& confi>99 ) {
-            mp.start();
-            ten =false;
-            fifty = false;
-            twen = false;
-            twothou = true;
-            hundred = false;
-            fivehun = false;
-            two = false;
-          }else if (!hundred&&recognitionTextView.getText().toString().contains("100")&& confi>99 ) {
+          if (!hundred&&recognitionTextView.getText().toString().equalsIgnoreCase("₹100")&& confi>99.1 ) {
             mp4.start();
             ten =false;
             fifty = false;
@@ -658,7 +622,7 @@ boolean ten = false;
             hundred = true;
             fivehun = false;
             two = false;
-          }else if (!fivehun&&recognitionTextView.getText().toString().contains("500")&& confi>90 ) {
+          }else if (!fivehun&&recognitionTextView.getText().toString().equalsIgnoreCase("₹500")&& confi>90.1 ) {
             mp6.start();
             ten =false;
             fifty = false;
@@ -667,7 +631,7 @@ boolean ten = false;
             hundred = false;
             fivehun = true;
             two = false;
-          }else if (!two&&recognitionTextView.getText().toString().contains("200")&& confi>99 ) {
+          }else if (!two&&recognitionTextView.getText().toString().equalsIgnoreCase("₹200")&& confi>99.1 ) {
             mp5.start();
             ten =false;
             fifty = false;
