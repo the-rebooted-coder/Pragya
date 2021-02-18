@@ -66,6 +66,8 @@ public class Settings extends AppCompatActivity {
         startEaster.setOnClickListener(v -> {
             clickcount=clickcount+1;
             if(clickcount==1) {
+                int vib_delay = 100;
+                new Handler().postDelayed(this::vibrateDevice, vib_delay);
                 vibrateDeviceLightly();
                 Toast.makeText(getApplicationContext(), "Hey Did You Found Something?", Toast.LENGTH_SHORT).show();
             }
