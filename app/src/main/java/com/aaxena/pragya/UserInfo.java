@@ -21,11 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.firebase.auth.FirebaseAuth;
 import com.pedromassango.doubleclick.DoubleClick;
 import com.pedromassango.doubleclick.DoubleClickListener;
-
-import org.tensorflow.lite.examples.classification.ClassifierActivity;
 
 /*
 Bit by Bit Information
@@ -137,7 +134,7 @@ public class UserInfo extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent toLanding = new Intent(UserInfo.this, ClassifierActivity.class);
+        Intent toLanding = new Intent(UserInfo.this, Landing.class);
         startActivity (toLanding);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();

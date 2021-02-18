@@ -14,8 +14,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.tensorflow.lite.examples.classification.ClassifierActivity;
-
 public class AboutPragya extends AppCompatActivity {
     private static final String PREFS_NAME = "Vibration";
     String TEXT = "text";
@@ -30,7 +28,7 @@ public class AboutPragya extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent toLanding = new Intent(AboutPragya.this, ClassifierActivity.class);
+        Intent toLanding = new Intent(AboutPragya.this, Landing.class);
         startActivity (toLanding);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();

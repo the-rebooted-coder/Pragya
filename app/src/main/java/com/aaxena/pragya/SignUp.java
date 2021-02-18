@@ -27,8 +27,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import org.tensorflow.lite.examples.classification.ClassifierActivity;
-
 public class SignUp extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private String TAG = "Login";
@@ -92,7 +90,7 @@ public class SignUp extends AppCompatActivity {
             GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
             if (account !=null){
-                Intent i=new Intent(SignUp.this, ClassifierActivity.class);
+                Intent i=new Intent(SignUp.this, Landing.class);
                 startActivity(i);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();

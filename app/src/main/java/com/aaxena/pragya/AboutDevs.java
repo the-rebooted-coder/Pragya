@@ -18,8 +18,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import org.tensorflow.lite.examples.classification.ClassifierActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -165,7 +163,7 @@ public class AboutDevs extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent toLanding = new Intent(AboutDevs.this, ClassifierActivity.class);
+        Intent toLanding = new Intent(AboutDevs.this, Landing.class);
         startActivity (toLanding);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();
