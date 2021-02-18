@@ -18,8 +18,8 @@
             android:layout_width="220dp"
             android:layout_height="220dp"
             app:lottie_autoPlay="true"
-            app:lottie_fileName="splash_short.json"
-            app:lottie_loop="false" />
+            app:lottie_fileName="welcome.json"
+            app:lottie_loop="true" />
 
         <TextView
             android:layout_width="wrap_content"
