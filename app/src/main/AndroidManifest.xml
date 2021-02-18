@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pragya">
-        <activity android:name=".Landing"></activity>
+        <activity android:name=".Landing"/>
         <activity android:name=".WelcomeActivity" />
         <activity android:name="br.usp.ime.retrobreaker.WrapperActivity" />
         <activity android:name="br.usp.ime.retrobreaker.GameActivity" />

@@ -1,34 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white">
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        tools:ignore="UselessParent">
-
+        android:orientation="vertical">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/first"
-            android:layout_width="220dp"
-            android:layout_height="220dp"
+            android:layout_width="280dp"
+            android:layout_height="280dp"
             app:lottie_autoPlay="true"
-            app:lottie_fileName="welcome.json"
-            app:lottie_loop="true" />
+            app:lottie_loop="true"
+            app:lottie_fileName="permissions.json"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/pragya"
+            android:text="Oh! One More Thing!"
             android:textAlignment="center"
-            android:text="@string/welcome"
             android:textColor="@android:color/black"
             android:textSize="@dimen/slide_title"
             android:textStyle="bold" />
@@ -36,14 +33,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/pragya"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/pragya"
             android:paddingLeft="@dimen/desc_padding"
             android:paddingRight="@dimen/desc_padding"
-            android:text="@string/motto"
+            android:text="Please provide the storage permissions or else where will the saved documents Go?"
             android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/slide_desc" />
+            android:textSize="18sp" />
 
     </LinearLayout>
+
 </RelativeLayout>
