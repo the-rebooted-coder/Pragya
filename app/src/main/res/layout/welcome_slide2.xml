@@ -18,7 +18,7 @@
             android:fontFamily="@font/pragya"
             android:text="Step #1"
             android:textAlignment="center"
-            android:textColor="@android:color/black"
+            android:textColor="@color/retro_red"
             android:textSize="@dimen/slide_title"
             android:textStyle="bold" />
 

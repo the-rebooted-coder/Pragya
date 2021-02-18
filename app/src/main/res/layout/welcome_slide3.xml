@@ -16,9 +16,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/pragya"
-            android:text="Step #2"
+            android:text="@string/step_2"
             android:textAlignment="center"
-            android:textColor="@android:color/black"
+            android:textColor="@color/retro_red"
             android:textSize="@dimen/slide_title"
             android:textStyle="bold" />
 
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/pragya"
-            android:text="Tap on the bottom-right of any denomination note"
+            android:text="@string/ins_2"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="@dimen/slide_desc"

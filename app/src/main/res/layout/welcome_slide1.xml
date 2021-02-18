@@ -27,9 +27,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/pragya"
-            android:textAlignment="center"
             android:text="@string/welcome"
-            android:textColor="@android:color/black"
+            android:textAlignment="center"
+            android:textColor="@color/retro_red"
             android:textSize="@dimen/slide_title"
             android:textStyle="bold" />
 
