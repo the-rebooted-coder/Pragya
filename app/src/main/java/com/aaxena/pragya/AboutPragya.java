@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cis470.lakiel.ocrreader.ScannerActivity;
+
 public class AboutPragya extends AppCompatActivity {
     private static final String PREFS_NAME = "Vibration";
     String TEXT = "text";
@@ -23,15 +25,6 @@ public class AboutPragya extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_pragya);
 
-    }
-    
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent toLanding = new Intent(AboutPragya.this, Landing.class);
-        startActivity (toLanding);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        finish();
     }
 
     private void vibrateDevice() {

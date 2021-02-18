@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cis470.lakiel.ocrreader.ScannerActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -90,7 +91,7 @@ public class SignUp extends AppCompatActivity {
             GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
             if (account !=null){
-                Intent i=new Intent(SignUp.this, Landing.class);
+                Intent i=new Intent(SignUp.this, ScannerActivity.class);
                 startActivity(i);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();

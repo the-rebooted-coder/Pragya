@@ -19,6 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.cis470.lakiel.ocrreader.ScannerActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.pedromassango.doubleclick.DoubleClick;
@@ -129,15 +130,6 @@ public class UserInfo extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             user_bios.setText("->JUETPragya % user\n\n====="+personName+"=====\n\n->JUETPragya % email\n\n====="+personEmail+"=====\n\n\n->JUETPragya % Double Tap To Logout.");
         }, splash_screen_short13);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent toLanding = new Intent(UserInfo.this, Landing.class);
-        startActivity (toLanding);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        finish();
     }
 
     private void vibrateDevice() {

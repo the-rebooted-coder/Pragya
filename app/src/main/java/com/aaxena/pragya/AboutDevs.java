@@ -18,6 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.cis470.lakiel.ocrreader.ScannerActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -158,14 +160,5 @@ public class AboutDevs extends AppCompatActivity {
             default:
                 return super.dispatchKeyEvent(event);
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent toLanding = new Intent(AboutDevs.this, Landing.class);
-        startActivity (toLanding);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        finish();
     }
 }

@@ -15,6 +15,7 @@ import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cis470.lakiel.ocrreader.ScannerActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
@@ -67,7 +68,7 @@ public class SplashScreenLong extends AppCompatActivity {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         if (account !=null){
             //User Signed In, Proceeding to Landing
-            Intent i=new Intent(SplashScreenLong.this, Landing.class);
+            Intent i=new Intent(SplashScreenLong.this, ScannerActivity.class);
             startActivity(i);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
