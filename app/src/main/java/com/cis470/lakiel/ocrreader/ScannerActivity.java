@@ -342,9 +342,6 @@ public class ScannerActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mPreview != null) {
-            mPreview.release();
-        }
     }
 
     /**
@@ -443,10 +440,31 @@ public class ScannerActivity extends AppCompatActivity {
                 String securityCheck = "RESERVE BANK OF INDIA";
                 if(textDetect.contains(securityCheck))
                 {
-                    Toast.makeText(ScannerActivity.this,"Rs. 50",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ScannerActivity.this,"INR Valid Currency Confirmed",Toast.LENGTH_SHORT).show();
+                }
+                else if (textDetect.equals("10")){
+                    Toast.makeText(ScannerActivity.this,"₹ 10",Toast.LENGTH_SHORT).show();
+                }
+                else if (textDetect.equals("20")){
+                    Toast.makeText(ScannerActivity.this,"₹ 20",Toast.LENGTH_SHORT).show();
+                }
+                else if (textDetect.equals("50")){
+                    Toast.makeText(ScannerActivity.this,"₹ 50",Toast.LENGTH_SHORT).show();
+                }
+                else if (textDetect.equals("100")){
+                    Toast.makeText(ScannerActivity.this,"₹ 100",Toast.LENGTH_SHORT).show();
+                }
+                else if (textDetect.equals("200")){
+                    Toast.makeText(ScannerActivity.this,"₹ 200",Toast.LENGTH_SHORT).show();
+                }
+                else if (textDetect.equals("500")){
+                    Toast.makeText(ScannerActivity.this,"₹ 500",Toast.LENGTH_SHORT).show();
+                }
+                else if (textDetect.equals("2000")){
+                    Toast.makeText(ScannerActivity.this,"₹ 2000",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(ScannerActivity.this,"Not a Valid Currency",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ScannerActivity.this,"Invalid Currency!",Toast.LENGTH_SHORT).show();
                 }
 //                Log.d(TAG, "text data is being spoken! " + text.getValue());
 //                // Speak the string.
