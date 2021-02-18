@@ -12,34 +12,31 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pragya"
+            android:text="First things first !"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
         <ImageView
             android:id="@+id/first"
-            android:layout_width="230dp"
-            android:layout_height="250dp"
-            android:src="@drawable/shrish"/>
+            android:layout_width="400dp"
+            android:layout_height="335dp"
+            android:src="@drawable/top_click" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/pragya"
-            android:text="Placeholder"
+            android:text="Tap on the top-right of any denomination note"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="@dimen/slide_title"
             android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/pragya"
-            android:paddingLeft="@dimen/desc_padding"
-            android:paddingRight="@dimen/desc_padding"
-            android:text="Placeholder"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/slide_desc" />
-
     </LinearLayout>
 
 

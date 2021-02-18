@@ -37,7 +37,7 @@
             android:fontFamily="@font/pragya"
             android:paddingLeft="@dimen/desc_padding"
             android:paddingRight="@dimen/desc_padding"
-            android:text="Please provide the storage permissions or else where will the saved documents Go?"
+            android:text="Please provide the camera permissions or else how can the A.I work?"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
