@@ -35,7 +35,7 @@
             android:text="Tap on the top-right of any denomination note"
             android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/slide_title"
+            android:textSize="@dimen/slide_desc"
             android:textStyle="bold" />
     </LinearLayout>
 
