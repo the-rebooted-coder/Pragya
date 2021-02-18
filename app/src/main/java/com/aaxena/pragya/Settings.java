@@ -66,29 +66,36 @@ public class Settings extends AppCompatActivity {
         startEaster.setOnClickListener(v -> {
             clickcount=clickcount+1;
             if(clickcount==1) {
+                vibrateDeviceLightly();
                 Toast.makeText(getApplicationContext(), "Hey Did You Found Something?", Toast.LENGTH_SHORT).show();
             }
             else if (clickcount==2)
             {
+                vibrateDeviceLightly();
                 Toast.makeText(getApplicationContext(),"Come on, there is nothing here", Toast.LENGTH_SHORT).show();
             }
             else if (clickcount==3)
             {
+                vibrateDeviceLightly();
                 Toast.makeText(getApplicationContext(),"You are not going right?", Toast.LENGTH_SHORT).show();
             }else if (clickcount==4)
             {
+                vibrateDeviceLightly();
                 Toast.makeText(getApplicationContext(),"Well, is this clicking thing amusing you?", Toast.LENGTH_SHORT).show();
             }
             else if (clickcount==5)
             {
+                vibrateDeviceLightly();
                 Toast.makeText(getApplicationContext(),"Stop right there!", Toast.LENGTH_SHORT).show();
             }
             else if (clickcount==6)
             {
+                vibrateDeviceLightly();
                 Toast.makeText(getApplicationContext(),"If I was you, I would have stopped", Toast.LENGTH_SHORT).show();
             }
             else if (clickcount==7)
             {
+                vibrateDeviceLightly();
                 Toast.makeText(getApplicationContext(),"Ok here take the key " + ("\uD83D\uDD11"), Toast.LENGTH_SHORT).show();
             }
             else if (clickcount==8)
@@ -116,6 +123,24 @@ public class Settings extends AppCompatActivity {
         startActivity (toLanding);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();
+    }
+
+    private void vibrateDeviceLightly() {
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        String vibration_setting = sharedPreferences.getString(TEXT, "on");
+
+        if (vibration_setting.equals("on")) {
+            Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                v3.vibrate(VibrationEffect.createOneShot(25, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                //deprecated in API 26
+                v3.vibrate(23);
+            }
+        } else {
+            Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            v3.vibrate(0);
+        }
     }
     private void vibrateDevice() {
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
