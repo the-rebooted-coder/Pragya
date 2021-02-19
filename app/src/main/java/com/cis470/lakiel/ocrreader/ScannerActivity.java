@@ -443,25 +443,25 @@ public class ScannerActivity extends AppCompatActivity {
                 {
                     Toast.makeText(this,"INR Valid Currency Confirmed",Toast.LENGTH_SHORT).show();
                 }
-                else if (textDetect.equals("10")){
+                else if (textDetect.contains("10")){
                     Toast.makeText(this,"₹ 10",Toast.LENGTH_SHORT).show();
                 }
-                else if (textDetect.equals("20")){
+                else if (textDetect.contains("20")){
                     Toast.makeText(this,"₹ 20",Toast.LENGTH_SHORT).show();
                 }
-                else if (textDetect.equals("50")){
+                else if (textDetect.contains("50")){
                     Toast.makeText(this,"₹ 50",Toast.LENGTH_SHORT).show();
                 }
-                else if (textDetect.equals("100")){
+                else if (textDetect.contains("100")){
                     Toast.makeText(this,"₹ 100",Toast.LENGTH_SHORT).show();
                 }
-                else if (textDetect.equals("200")){
+                else if (textDetect.contains("200")){
                     Toast.makeText(this,"₹ 200",Toast.LENGTH_SHORT).show();
                 }
-                else if (textDetect.equals("500")){
+                else if (textDetect.contains("500")){
                     Toast.makeText(this,"₹ 500",Toast.LENGTH_SHORT).show();
                 }
-                else if (textDetect.equals("2000")){
+                else if (textDetect.contains("2000")){
                     Toast.makeText(this,"₹ 2000",Toast.LENGTH_SHORT).show();
                 }
                 else {
