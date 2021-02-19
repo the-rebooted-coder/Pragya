@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.cis470.lakiel.ocrreader.ScannerActivity;
+import org.tensorflow.lite.examples.classification.ClassifierActivity;
 
 import java.util.Random;
 
@@ -37,7 +37,7 @@ public class SplashScreenShort extends AppCompatActivity {
             mp.start();
             vibrateDevice();
             setAudio();
-            Intent toLanding = new Intent(this, ScannerActivity.class);
+            Intent toLanding = new Intent(this, ClassifierActivity.class);
             startActivity(toLanding);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();

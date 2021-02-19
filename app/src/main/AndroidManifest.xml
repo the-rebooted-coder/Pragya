@@ -22,8 +22,8 @@
         <activity android:name=".UserInfo" />
         <activity android:name=".Settings" />
         <activity android:name=".AboutDevs" />
+        <activity android:name="org.tensorflow.lite.examples.classification.ClassifierActivity"/>
         <activity android:name=".SignUp" />
-        <activity android:name="com.cis470.lakiel.ocrreader.ScannerActivity" />
         <activity android:name=".SplashScreenShort" />
         <activity
             android:name=".SplashScreenLong"

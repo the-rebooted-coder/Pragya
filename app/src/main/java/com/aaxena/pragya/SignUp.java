@@ -16,7 +16,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.cis470.lakiel.ocrreader.ScannerActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -27,6 +26,8 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+import org.tensorflow.lite.examples.classification.ClassifierActivity;
 
 public class SignUp extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
@@ -91,7 +92,7 @@ public class SignUp extends AppCompatActivity {
             GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
             if (account !=null){
-                Intent i=new Intent(SignUp.this, ScannerActivity.class);
+                Intent i=new Intent(SignUp.this, ClassifierActivity.class);
                 startActivity(i);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();

@@ -17,8 +17,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.cis470.lakiel.ocrreader.ScannerActivity;
-
 import br.usp.ime.retrobreaker.WrapperActivity;
 
 public class Settings extends AppCompatActivity {
