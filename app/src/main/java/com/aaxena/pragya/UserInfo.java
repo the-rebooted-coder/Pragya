@@ -3,6 +3,7 @@ package com.aaxena.pragya;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +23,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.pedromassango.doubleclick.DoubleClick;
 import com.pedromassango.doubleclick.DoubleClickListener;
+
+import org.tensorflow.lite.examples.classification.ClassifierActivity;
 
 /*
 Bit by Bit Information
@@ -187,5 +190,13 @@ public class UserInfo extends AppCompatActivity {
             default:
                 return super.dispatchKeyEvent(event);
         }
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent toLanding = new Intent(this, ClassifierActivity.class);
+        startActivity(toLanding);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
     }
 }

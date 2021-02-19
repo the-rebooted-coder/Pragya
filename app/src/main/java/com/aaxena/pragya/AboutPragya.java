@@ -2,6 +2,7 @@ package com.aaxena.pragya;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.view.KeyEvent;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.tensorflow.lite.examples.classification.ClassifierActivity;
 
 public class AboutPragya extends AppCompatActivity {
     private static final String PREFS_NAME = "Vibration";
@@ -81,6 +84,14 @@ public class AboutPragya extends AppCompatActivity {
             default:
                 return super.dispatchKeyEvent(event);
         }
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent toLanding = new Intent(this, ClassifierActivity.class);
+        startActivity(toLanding);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
     }
 }
 

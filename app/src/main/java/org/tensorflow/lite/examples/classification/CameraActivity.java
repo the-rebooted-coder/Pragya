@@ -602,18 +602,17 @@ public abstract class CameraActivity extends AppCompatActivity
                   String.format("%.2f", (100 * recognition.getConfidence())) + "%");
         float confi = 100 * recognition.getConfidence();
         try {
-          if (!hundred&&recognitionTextView.getText().toString().equalsIgnoreCase("₹100")&& confi>=99 ) {
+          if (!hundred&&recognitionTextView.getText().toString().contains("₹100")&& confi>=99 ) {
             mp4.start();
             hundred = true;
             fivehun = false;
             two = false;
-
-          }else if (!fivehun&&recognitionTextView.getText().toString().equalsIgnoreCase("₹500")&& confi>=99 ) {
+          }else if (!fivehun&&recognitionTextView.getText().toString().contains("₹500")&& confi>=99 ) {
             mp6.start();
             hundred = false;
             fivehun = true;
             two = false;
-          }else if (!two&&recognitionTextView.getText().toString().equalsIgnoreCase("₹200")&& confi>=99) {
+          }else if (!two&&recognitionTextView.getText().toString().contains("₹200")&& confi>=99) {
             mp5.start();
             hundred = false;
             fivehun = false;
