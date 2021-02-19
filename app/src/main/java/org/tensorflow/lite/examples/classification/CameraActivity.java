@@ -128,6 +128,10 @@ public abstract class CameraActivity extends AppCompatActivity
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     setContentView(R.layout.activity_camera);
 
+    mp4 = MediaPlayer.create(this,R.raw.hundred);
+    mp5 = MediaPlayer.create(this,R.raw.two);
+    mp6 = MediaPlayer.create(this,R.raw.fivehun);
+
     Toolbar toolbar = findViewById(R.id.my_toolbar);
     setSupportActionBar(toolbar);
 
@@ -346,9 +350,6 @@ public abstract class CameraActivity extends AppCompatActivity
     handlerThread = new HandlerThread("inference");
     handlerThread.start();
     handler = new Handler(handlerThread.getLooper());
-    mp4 = MediaPlayer.create(this,R.raw.hundred);
-    mp5 = MediaPlayer.create(this,R.raw.two);
-    mp6 = MediaPlayer.create(this,R.raw.fivehun);
   }
 
   @Override
@@ -602,17 +603,17 @@ public abstract class CameraActivity extends AppCompatActivity
                   String.format("%.2f", (100 * recognition.getConfidence())) + "%");
         float confi = 100 * recognition.getConfidence();
         try {
-          if (!hundred&&recognitionTextView.getText().toString().contains("₹100")&& confi>=99 ) {
+          if (!hundred&&recognitionTextView.getText().toString().contains("100")&& confi>=99 ) {
             mp4.start();
             hundred = true;
             fivehun = false;
             two = false;
-          }else if (!fivehun&&recognitionTextView.getText().toString().contains("₹500")&& confi>=99 ) {
+          }else if (!fivehun&&recognitionTextView.getText().toString().contains("500")&& confi>=99 ) {
             mp6.start();
             hundred = false;
             fivehun = true;
             two = false;
-          }else if (!two&&recognitionTextView.getText().toString().contains("₹200")&& confi>=99) {
+          }else if (!two&&recognitionTextView.getText().toString().contains("200")&& confi>=99) {
             mp5.start();
             hundred = false;
             fivehun = false;
