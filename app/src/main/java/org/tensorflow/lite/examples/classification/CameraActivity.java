@@ -607,23 +607,17 @@ public abstract class CameraActivity extends AppCompatActivity
             hundred = true;
             fivehun = false;
             two = false;
-            int music_stop = 1000;
-            new Handler().postDelayed(mp4::stop, music_stop);
 
           }else if (!fivehun&&recognitionTextView.getText().toString().equalsIgnoreCase("₹500")&& confi>99 ) {
             mp6.start();
             hundred = false;
             fivehun = true;
             two = false;
-            int music_stop = 1000;
-            new Handler().postDelayed(mp6::stop, music_stop);
           }else if (!two&&recognitionTextView.getText().toString().equalsIgnoreCase("₹200")&& confi>99) {
             mp5.start();
             hundred = false;
             fivehun = false;
             two = true;
-            int music_stop = 1000;
-            new Handler().postDelayed(mp5::stop, music_stop);
           }
 
         }catch (Exception e){
