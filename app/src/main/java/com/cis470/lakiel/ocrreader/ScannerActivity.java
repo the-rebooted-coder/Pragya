@@ -12,9 +12,11 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.speech.tts.TextToSpeech;
@@ -115,7 +117,7 @@ public class ScannerActivity extends AppCompatActivity {
         gestureDetector = new GestureDetector(this, new CaptureGestureListener());
         scaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
 
-        Snackbar.make(mGraphicOverlay, "Tap to Speak. Pinch/Stretch to zoom",
+        Snackbar.make(mGraphicOverlay, "Wait for the camera to gain focus, Then perform the steps!",
                 Snackbar.LENGTH_LONG)
                 .show();
 
@@ -441,10 +443,18 @@ public class ScannerActivity extends AppCompatActivity {
 
                 if(textDetect.contains(securityCheck))
                 {
+                    vibrateDevice();
                     Toast.makeText(this,"INR Valid Currency Confirmed",Toast.LENGTH_SHORT).show();
+                    int vib_stop = 100;
+                    new Handler().postDelayed(this::vibrateDeviceLightly, vib_stop);
                 }
                 else if (textDetect.contains("10")){
+                    final MediaPlayer mp = MediaPlayer.create(this, R.raw.ten);
                     Toast.makeText(this,"₹ 10",Toast.LENGTH_SHORT).show();
+                    mp.start();
+                    int music_stop = 1000;
+                    new Handler().postDelayed(mp::stop, music_stop);
+
                 }
                 else if (textDetect.contains("20")){
                     Toast.makeText(this,"₹ 20",Toast.LENGTH_SHORT).show();
@@ -583,5 +593,22 @@ public class ScannerActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+    private void vibrateDeviceLightly() {
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        String vibration_setting = sharedPreferences.getString(TEXT, "on");
+
+        if (vibration_setting.equals("on")) {
+            Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                v3.vibrate(VibrationEffect.createOneShot(25, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                //deprecated in API 26
+                v3.vibrate(23);
+            }
+        } else {
+            Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            v3.vibrate(0);
+        }
     }
 }
