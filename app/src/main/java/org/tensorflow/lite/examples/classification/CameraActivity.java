@@ -22,6 +22,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
@@ -136,6 +137,8 @@ public abstract class CameraActivity extends AppCompatActivity
   private Device device = Device.CPU;
   private int numThreads = -1;
   MediaPlayer mp4, mp5, mp6;
+  private static final String VOLUME_CONTROL = "Volume";
+  String VOLUME = "volume";
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
@@ -810,21 +813,28 @@ public abstract class CameraActivity extends AppCompatActivity
     // Do nothing.
   }
 
-  @SuppressLint("ApplySharedPref")
   @Override
   public boolean dispatchKeyEvent(KeyEvent event) {
     int action = event.getAction();
+    //Loading Shared Prefs of Volume
+    SharedPreferences sharedPreferencesVol = getSharedPreferences(VOLUME_CONTROL, Context.MODE_PRIVATE);
+    String volumePredictionDecider = sharedPreferencesVol.getString(VOLUME,"off");
     int keyCode = event.getKeyCode();
     switch (keyCode) {
       case KeyEvent.KEYCODE_VOLUME_UP:
-        if (action == KeyEvent.ACTION_DOWN) {
+        if (action == KeyEvent.ACTION_DOWN && volumePredictionDecider.equals("off")){
           vibrateDevice();
           makeAudio = true;
           Toast.makeText(this,"Prediction On",Toast.LENGTH_SHORT).show();
         }
+        else if (volumePredictionDecider.equals("on")){
+          AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+          audio.adjustStreamVolume(AudioManager.STREAM_MUSIC,
+                  AudioManager.ADJUST_RAISE, AudioManager.FLAG_SHOW_UI);
+        }
         return true;
       case KeyEvent.KEYCODE_VOLUME_DOWN:
-        if (action == KeyEvent.ACTION_DOWN) {
+        if (action == KeyEvent.ACTION_DOWN && volumePredictionDecider.equals("off")){
           vibrateDevice();
           int vib_delay = 100;
           new Handler().postDelayed(() -> {
@@ -838,7 +848,11 @@ public abstract class CameraActivity extends AppCompatActivity
             }
           }, vib_delay);
           Toast.makeText(this,"Prediction Off",Toast.LENGTH_SHORT).show();
-
+        }
+        else if (volumePredictionDecider.equals("on")){
+          AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+          audio.adjustStreamVolume(AudioManager.STREAM_MUSIC,
+                  AudioManager.ADJUST_LOWER, AudioManager.FLAG_SHOW_UI);
         }
         return true;
       default:
