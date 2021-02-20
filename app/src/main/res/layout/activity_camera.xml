@@ -20,6 +20,7 @@
     android:background="#00000000">
 
     <RelativeLayout
+        android:id="@+id/snack"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#00000000"

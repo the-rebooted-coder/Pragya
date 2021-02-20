@@ -41,6 +41,7 @@ import android.os.Trace;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Size;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -66,6 +67,7 @@ import com.aaxena.pragya.R;
 import com.aaxena.pragya.Settings;
 import com.aaxena.pragya.UserInfo;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
 import com.google.android.play.core.install.InstallState;
@@ -95,7 +97,7 @@ public abstract class CameraActivity extends AppCompatActivity
   private static final int RC_APP_UPDATE = 11;
 
   private static final int PERMISSIONS_REQUEST = 1;
-
+  boolean makeAudio = false;
   private static final String PERMISSION_CAMERA = Manifest.permission.CAMERA;
   protected int previewWidth = 0;
   protected int previewHeight = 0;
@@ -140,10 +142,12 @@ public abstract class CameraActivity extends AppCompatActivity
     super.onCreate(null);
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     setContentView(R.layout.activity_camera);
-
     mp4 = MediaPlayer.create(this, R.raw.hundred);
     mp5 = MediaPlayer.create(this, R.raw.two);
     mp6 = MediaPlayer.create(this, R.raw.fivehun);
+
+    Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Press Volume Down Button to Start Prediction", Snackbar.LENGTH_LONG);
+    snackbar.show();
 
     Toolbar toolbar = findViewById(R.id.my_toolbar);
     setSupportActionBar(toolbar);
@@ -653,18 +657,18 @@ public abstract class CameraActivity extends AppCompatActivity
                   String.format("%.2f", (100 * recognition.getConfidence())) + "%");
         float confi = 100 * recognition.getConfidence();
         try {
-          if (!hundred&&recognitionTextView.getText().toString().contains("100")&& confi>=75 ) {
+          if (!hundred&&recognitionTextView.getText().toString().contains("100")&& confi>=75 && makeAudio) {
               mp4.start();
               hundred = true;
               fivehun = false;
               two = false;
-          }else if (!fivehun&&recognitionTextView.getText().toString().contains("500")&& confi>=100 ) {
+          }else if (!fivehun&&recognitionTextView.getText().toString().contains("500")&& confi>=100 && makeAudio) {
               mp6.start();
               hundred = false;
               fivehun = true;
               two = false;
 
-          }else if (!two&&recognitionTextView.getText().toString().contains("200")&& confi>=75) {
+          }else if (!two&&recognitionTextView.getText().toString().contains("200")&& confi>=75 && makeAudio) {
               mp5.start();
               hundred = false;
               fivehun = false;
@@ -795,5 +799,41 @@ public abstract class CameraActivity extends AppCompatActivity
   @Override
   public void onNothingSelected(AdapterView<?> parent) {
     // Do nothing.
+  }
+
+  @SuppressLint("ApplySharedPref")
+  @Override
+  public boolean dispatchKeyEvent(KeyEvent event) {
+    int action = event.getAction();
+    int keyCode = event.getKeyCode();
+    switch (keyCode) {
+      case KeyEvent.KEYCODE_VOLUME_UP:
+        if (action == KeyEvent.ACTION_DOWN) {
+          vibrateDevice();
+          makeAudio = true;
+          Toast.makeText(this,"Prediction On",Toast.LENGTH_SHORT).show();
+        }
+        return true;
+      case KeyEvent.KEYCODE_VOLUME_DOWN:
+        if (action == KeyEvent.ACTION_DOWN) {
+          vibrateDevice();
+          int vib_delay = 100;
+          new Handler().postDelayed(() -> {
+            makeAudio = false;
+            Vibrator v4 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+              v4.vibrate(VibrationEffect.createOneShot(35, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+              //deprecated in API 26
+              v4.vibrate(30);
+            }
+          }, vib_delay);
+          Toast.makeText(this,"Prediction Off",Toast.LENGTH_SHORT).show();
+
+        }
+        return true;
+      default:
+        return super.dispatchKeyEvent(event);
+    }
   }
 }
