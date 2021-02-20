@@ -12,7 +12,7 @@ android {
         minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
-        versionName "beta32"
+        versionName "beta35"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

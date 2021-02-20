@@ -1,12 +1,10 @@
 package com.aaxena.pragya;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,64 +14,33 @@ import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import org.tensorflow.lite.examples.classification.ClassifierActivity;
 
 public class AboutPragya extends AppCompatActivity {
     private static final String PREFS_NAME = "Vibration";
     String TEXT = "text";
-    private final int STORAGE_PERMISSION_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_pragya);
-        downloadDocument();
+        viewDocument();
 
     }
 
-    private void downloadDocument() {
+    private void viewDocument() {
         Button downloadDocumentation = findViewById(R.id.downloadDocument);
         downloadDocumentation.setOnClickListener(v -> {
             vibrateDevice();
             int button_vib = 100;
             new Handler().postDelayed(this::vibrateDeviceLightly, button_vib);
-            if (ContextCompat.checkSelfPermission(AboutPragya.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED)
-            {
-                }
-            else {
-                {
-                    new AlertDialog.Builder(AboutPragya.this)
-                            .setTitle("Please Grant Storage Permissions")
-                            .setMessage("To save the project file, pragya needs access to your internal storage")
-                            .setPositiveButton("Grant", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    requestStoragePermission();
-                                    vibrateDeviceLightly();
-
-                                }
-                            })
-                            .create().show();
-                }
-            }
+            String url="https://drive.google.com/file/d/122KRMMI-m_k5ocNwoZMTW4NRDRxOY8OY/view?usp=sharing";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
         });
-    }
-    private void requestStoragePermission(){
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Can't Save Project File")
-                    .setMessage("Pragya Project Couldn't be Saved, because the download permission was denied!\n\nAllow Permission to Continue")
-                    .setPositiveButton("Okay", (dialog, which) -> ActivityCompat.requestPermissions(AboutPragya.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},STORAGE_PERMISSION_CODE))
-                    .setNegativeButton("Nope", (dialog, which) -> dialog.dismiss())
-                    .create().show();
-        }else {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},STORAGE_PERMISSION_CODE);
-        }
     }
 
     private void vibrateDevice() {
