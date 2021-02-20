@@ -94,10 +94,10 @@ public class AboutDevs extends AppCompatActivity {
         }, splash_screen_short10);
 
         models = new ArrayList<>();
-        models.add(new Model(R.drawable.spandan, "Spandan Saxena", "BackEnd Developer","Developers"));
-        models.add(new Model(R.drawable.shrish, "Shrish Sharma", "UI and UX","are just"));
-        models.add(new Model(R.drawable.sriniv, "Srinivasan Bashyam", "Code Watcher","tools that transform"));
-        models.add(new Model(R.drawable.shubham, "Shubham Munjani", "Text Slider","caffeine to code"));
+        models.add(new Model(R.drawable.spandan, "Spandan Saxena", "BackEnd Developer & UX","Developers"));
+        models.add(new Model(R.drawable.shrish, "Shrish Sharma", "UI & UX","are just"));
+        models.add(new Model(R.drawable.sriniv, "Srinivasan Bashyam", "Raw Assets & A.I. Model Data Facilitator","tools that transform"));
+        models.add(new Model(R.drawable.shubham, "Shubham Munjani", "A.I. Model Data Validator","caffeine to code"));
 
         adapter = new Adapter(models, this);
         viewPager.setAdapter(adapter);

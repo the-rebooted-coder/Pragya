@@ -28,6 +28,7 @@ import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.params.StreamConfigurationMap;
+import android.media.AudioManager;
 import android.media.Image;
 import android.media.Image.Plane;
 import android.media.ImageReader;
@@ -151,7 +152,7 @@ public abstract class CameraActivity extends AppCompatActivity
 
     Toolbar toolbar = findViewById(R.id.my_toolbar);
     setSupportActionBar(toolbar);
-
+    setAudio();
     if (hasPermission()) {
       setFragment();
     } else {
@@ -236,6 +237,14 @@ public abstract class CameraActivity extends AppCompatActivity
     model = Model.valueOf(modelSpinner.getSelectedItem().toString().toUpperCase());
     device = Device.valueOf(deviceSpinner.getSelectedItem().toString());
     numThreads = Integer.parseInt(threadsTextView.getText().toString().trim());
+  }
+
+  private void setAudio() {
+         /*
+        Sets Media Volume up so that if the user's volume is low the audio still sounds
+         */
+    AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 100, 0);
   }
 
   protected int[] getRgbBytes() {

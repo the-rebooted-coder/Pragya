@@ -26,6 +26,8 @@ public class Settings extends AppCompatActivity {
     String TEXT = "text";
     private static final String LONG_SPLASH = "Splash";
     String SPLASH = "splash";
+    private static final String VOLUME_CONTROL = "Volume";
+    String VOLUME = "volume";
     MediaPlayer mPlayer;
     int clickcount=0;
 
@@ -34,6 +36,9 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         ImageView longSplash = findViewById(R.id.switch_on);
+        ImageView volumePrediction = findViewById(R.id.switch_on2);
+
+        //Loading Shared Prefs of Splash
         SharedPreferences sharedPreferences = getSharedPreferences(LONG_SPLASH, Context.MODE_PRIVATE);
         String splash_settings = sharedPreferences.getString(SPLASH,"on");
         if (splash_settings.equals("off"))
@@ -43,6 +48,43 @@ public class Settings extends AppCompatActivity {
         else {
             longSplash.setBackgroundResource(R.drawable.switch_on);
         }
+
+        //Loading Shared Prefs of Volume
+        SharedPreferences sharedPreferencesVol = getSharedPreferences(VOLUME_CONTROL, Context.MODE_PRIVATE);
+        String volumePredictionDecider = sharedPreferencesVol.getString(VOLUME,"off");
+        if (volumePredictionDecider.equals("off"))
+        {
+            volumePrediction.setBackgroundResource(R.drawable.switch_off);
+        }
+        else {
+            volumePrediction.setBackgroundResource(R.drawable.switch_on);
+        }
+
+        //Volume Chooser Button
+        volumePrediction.setOnClickListener(v -> {
+            vibrateDevice();
+            playSound();
+            SharedPreferences settings2 = Settings.this.getSharedPreferences(VOLUME_CONTROL, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor2 = settings2.edit();
+            if (volumePredictionDecider.equals("off"))
+            {
+                editor2.putString(VOLUME, "on");
+                editor2.commit();
+                Toast.makeText(Settings.this,"Volume Buttons now Control Volume",Toast.LENGTH_LONG).show();
+                volumePrediction.setBackgroundResource(R.drawable.switch_on);
+                recreate();
+            }
+            else{
+                editor2.putString(VOLUME, "off");
+                editor2.commit();
+                Toast.makeText(Settings.this,"Volume Buttons now Control Predictions",Toast.LENGTH_LONG).show();
+                volumePrediction.setBackgroundResource(R.drawable.switch_off);
+                recreate();
+            }
+        });
+
+
+        //Splash Screen Chooser Button
         longSplash.setOnClickListener(v -> {
             vibrateDevice();
             playSound();
@@ -64,6 +106,8 @@ public class Settings extends AppCompatActivity {
                 recreate();
             }
         });
+
+        //Easter Egg Starter Button
         Button startEaster = findViewById(R.id.startEaster);
         startEaster.setOnClickListener(v -> {
             clickcount=clickcount+1;
