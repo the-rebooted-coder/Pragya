@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/pragya"
-            android:text="Oh! One More Thing!"
+            android:text="@string/just_before_we_begin"
             android:textAlignment="center"
             android:textColor="@color/retro_red"
             android:textSize="@dimen/slide_title"
@@ -37,7 +37,7 @@
             android:fontFamily="@font/pragya"
             android:paddingLeft="@dimen/desc_padding"
             android:paddingRight="@dimen/desc_padding"
-            android:text="Please provide the camera permissions or else how will the A.I work?"
+            android:text="@string/please_provide_the_camera_permissions_or_else_how_will_the_a_i_work"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="@dimen/slide_desc" />
