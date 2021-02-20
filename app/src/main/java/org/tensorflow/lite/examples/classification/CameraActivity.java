@@ -603,7 +603,7 @@ public abstract class CameraActivity extends AppCompatActivity
                   String.format("%.2f", (100 * recognition.getConfidence())) + "%");
         float confi = 100 * recognition.getConfidence();
         try {
-          if (!hundred&&recognitionTextView.getText().toString().contains("100")&& confi>=70 ) {
+          if (!hundred&&recognitionTextView.getText().toString().contains("100")&& confi>=75 ) {
               mp4.start();
               hundred = true;
               fivehun = false;
@@ -614,7 +614,7 @@ public abstract class CameraActivity extends AppCompatActivity
               fivehun = true;
               two = false;
 
-          }else if (!two&&recognitionTextView.getText().toString().contains("200")&& confi>=70) {
+          }else if (!two&&recognitionTextView.getText().toString().contains("200")&& confi>=75) {
               mp5.start();
               hundred = false;
               fivehun = false;

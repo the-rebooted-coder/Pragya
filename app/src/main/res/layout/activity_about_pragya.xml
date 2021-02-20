@@ -44,13 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="973dp"
                 android:fontFamily="@font/pragya"
-                android:text="Hello there, hope you liked our work.\n \nHere is little insight to the work.\n\n
-Our app PRAGYA [ Pragya (Sanskrit: प्रज्ञ) is used to refer to the highest and purest form of wisdom, intelligence and understanding. Pragya is the state of wisdom which is higher than the knowledge obtained by reasoning and inference], is a helping tool for differently abled people, elder citizens and for everyone. It identifies the currency present in front of the camera and tell its amount to the user through voice message.\n\n
-Since demonetization, many new currencies arrived and with them came a little confusion of distinguishing between different notes, due to there new size and appearance. This created little problem for those having weak eyesight. So, here’s our little work as a helping hand to tackle this problem.\n\n
-In order to uniquely identify the different currencies, we used “Teachable machine”, available in the google. Which made our work much easier and also saved a lot of our time.\n\n
-We are also planning to take this work few steps ahead by adding ‘global recognition’ feature. At that stage this app can be used to identify any currency of the world. This feature can be very useful for the tourists that are passionate for travelling across different countries.\n\n
-As of now this is the final output of our effort, teamwork, ideas, dedication, a little bit frustration, some fun, and lots of learning.\n\n
-Thanks for visiting us. Have a great day ahead."
+                android:text="@string/about_app"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
