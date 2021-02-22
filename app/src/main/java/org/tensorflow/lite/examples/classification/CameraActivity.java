@@ -51,6 +51,7 @@ import android.view.Surface;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -86,6 +87,8 @@ import org.tensorflow.lite.examples.classification.tflite.Classifier.Recognition
 
 import java.nio.ByteBuffer;
 import java.util.List;
+
+import static android.graphics.Color.BLACK;
 
 public abstract class CameraActivity extends AppCompatActivity
     implements OnImageAvailableListener,
@@ -132,6 +135,10 @@ public abstract class CameraActivity extends AppCompatActivity
   private Spinner deviceSpinner;
   private TextView threadsTextView;
 
+  protected AlphaAnimation fadeIn = new AlphaAnimation(0.0f , 1.0f ) ;
+  protected AlphaAnimation fadeOut = new AlphaAnimation( 1.0f , 0.0f ) ;
+  protected AlphaAnimation fadeOut2 = new AlphaAnimation( 1.0f , 0.0f ) ;
+
   // private Model model = Model.QUANTIZED;
   private Model model = Model.FLOAT;
   private Device device = Device.CPU;
@@ -149,9 +156,36 @@ public abstract class CameraActivity extends AppCompatActivity
     mp4 = MediaPlayer.create(this, R.raw.hundred);
     mp5 = MediaPlayer.create(this, R.raw.two);
     mp6 = MediaPlayer.create(this, R.raw.fivehun);
+    TextView txtView = findViewById(R.id.txtView);
+    txtView.startAnimation(fadeIn);
+    txtView.startAnimation(fadeOut);
+    fadeIn.setDuration(1200);
+    fadeIn.setFillAfter(true);
+    fadeOut.setDuration(1200);
+    fadeOut.setFillAfter(true);
+    fadeOut.setStartOffset(4200+fadeIn.getStartOffset());
 
-    Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Press Volume Down Button to Start Prediction", Snackbar.LENGTH_LONG);
-    snackbar.show();
+
+    int txtDelay = 4300;
+    new Handler().postDelayed((Runnable) () -> {
+      txtView.startAnimation(fadeIn);
+      txtView.setText(getString(R.string.app_name));
+      txtView.setTextColor(BLACK);
+    }, txtDelay);
+
+    //Loading Shared Prefs of Volume
+    SharedPreferences sharedPreferencesVol = getSharedPreferences(VOLUME_CONTROL, Context.MODE_PRIVATE);
+    String volumePredictionDecider = sharedPreferencesVol.getString(VOLUME,"off");
+    if (volumePredictionDecider.equals("off")) {
+      Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Press Volume Down Button to Start Prediction", Snackbar.LENGTH_LONG);
+      snackbar.show();
+    }
+    else {
+      Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Press Volume Down Button to Lower Prediction Volume", Snackbar.LENGTH_LONG);
+      snackbar.show();
+    }
+
+    invalidateOptionsMenu();
 
     Toolbar toolbar = findViewById(R.id.my_toolbar);
     setSupportActionBar(toolbar);
@@ -457,8 +491,39 @@ public abstract class CameraActivity extends AppCompatActivity
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();
         break;
+      case R.id.prediction:
+        if (!makeAudio) {
+          vibrateDevice();
+          makeAudio = true;
+          Toast.makeText(this, "Prediction On", Toast.LENGTH_SHORT).show();
+        }
+        else {
+          vibrateDevice();
+          int vib_delay = 100;
+          new Handler().postDelayed(() -> {
+            makeAudio = false;
+            Vibrator v4 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+              v4.vibrate(VibrationEffect.createOneShot(35, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+              //deprecated in API 26
+              v4.vibrate(30);
+            }
+          }, vib_delay);
+          Toast.makeText(this,"Prediction Off",Toast.LENGTH_SHORT).show();
+        }
     }
     return true;
+  }
+  @Override
+  public boolean onPrepareOptionsMenu(Menu menu) {
+    MenuItem item = menu.findItem(R.id.prediction);
+    if (makeAudio) {
+      item.setTitle("Turn Predictions Off");
+    } else {
+      item.setTitle("Turn Predictions On");
+    }
+    return super.onPrepareOptionsMenu(menu);
   }
   private void vibrateDevice() {
       Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);

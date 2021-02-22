@@ -68,6 +68,8 @@ public class Settings extends AppCompatActivity {
             SharedPreferences.Editor editor2 = settings2.edit();
             if (volumePredictionDecider.equals("off"))
             {
+                int vib_delay = 100;
+                new Handler().postDelayed(this::vibrateDeviceLightly, vib_delay);
                 editor2.putString(VOLUME, "on");
                 editor2.commit();
                 Toast.makeText(Settings.this,"Volume Buttons now Control Volume",Toast.LENGTH_LONG).show();
@@ -75,6 +77,8 @@ public class Settings extends AppCompatActivity {
                 recreate();
             }
             else{
+                int vib_delay = 100;
+                new Handler().postDelayed(this::vibrateDeviceLightly, vib_delay);
                 editor2.putString(VOLUME, "off");
                 editor2.commit();
                 Toast.makeText(Settings.this,"Volume Buttons now Control Predictions",Toast.LENGTH_LONG).show();
@@ -92,16 +96,20 @@ public class Settings extends AppCompatActivity {
             SharedPreferences.Editor editor = settings.edit();
             if (splash_settings.equals("off"))
             {
+                int vib_delay = 100;
+                new Handler().postDelayed(this::vibrateDeviceLightly, vib_delay);
                 editor.putString(SPLASH, "on");
                 editor.commit();
-                Toast.makeText(Settings.this,"BIOS Like Startup Enabled",Toast.LENGTH_SHORT).show();
+                Toast.makeText(Settings.this,"Animated Startup Enabled",Toast.LENGTH_SHORT).show();
                 longSplash.setBackgroundResource(R.drawable.switch_on);
                 recreate();
             }
             else{
+                int vib_delay = 100;
+                new Handler().postDelayed(this::vibrateDeviceLightly, vib_delay);
                 editor.putString(SPLASH, "off");
                 editor.commit();
-                Toast.makeText(Settings.this,"BIOS Like Startup Disabled",Toast.LENGTH_SHORT).show();
+                Toast.makeText(Settings.this,"Animated Startup Disabled",Toast.LENGTH_SHORT).show();
                 longSplash.setBackgroundResource(R.drawable.switch_off);
                 recreate();
             }

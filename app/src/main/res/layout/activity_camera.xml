@@ -43,11 +43,12 @@
             android:background="@color/semi_transparent">
 
             <TextView
+                android:id="@+id/txtView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pragya"
                 android:text="@string/app_name"
-                android:textColor="@color/black"
+                android:textColor="@color/retro_red"
                 android:textSize="24sp" />
         </androidx.appcompat.widget.Toolbar>
 
@@ -56,4 +57,5 @@
     <include
         android:id="@+id/bottom_sheet_layout"
         layout="@layout/layout_bottom_sheet" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
