@@ -15,19 +15,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pragya">
-        <activity android:name=".WelcomeActivity" />
-        <activity android:name="br.usp.ime.retrobreaker.WrapperActivity" />
-        <activity android:name="br.usp.ime.retrobreaker.GameActivity" />
-        <activity android:name=".AboutPragya" />
-        <activity android:name=".UserInfo" />
-        <activity android:name=".Settings" />
-        <activity android:name=".AboutDevs" />
+        <activity android:name=".WelcomeActivity"
+            android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name="br.usp.ime.retrobreaker.WrapperActivity"
+            android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name="br.usp.ime.retrobreaker.GameActivity"
+            android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name=".AboutPragya"
+            android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name=".UserInfo"
+            android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name=".Settings"
+            android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name=".AboutDevs"
+            android:theme="@style/Theme.Design.NoActionBar"/>
         <activity android:name="org.tensorflow.lite.examples.classification.ClassifierActivity"/>
-        <activity android:name=".SignUp" />
-        <activity android:name=".SplashScreenShort" />
+        <activity android:name=".SignUp"
+            android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name=".SplashScreenShort"
+            android:theme="@style/Theme.Design.NoActionBar"/>
         <activity
             android:name=".SplashScreenLong"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

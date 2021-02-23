@@ -153,6 +153,7 @@ public abstract class CameraActivity extends AppCompatActivity
     super.onCreate(null);
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     setContentView(R.layout.activity_camera);
+
     mp4 = MediaPlayer.create(this, R.raw.hundred);
     mp5 = MediaPlayer.create(this, R.raw.two);
     mp6 = MediaPlayer.create(this, R.raw.fivehun);
@@ -177,7 +178,7 @@ public abstract class CameraActivity extends AppCompatActivity
     SharedPreferences sharedPreferencesVol = getSharedPreferences(VOLUME_CONTROL, Context.MODE_PRIVATE);
     String volumePredictionDecider = sharedPreferencesVol.getString(VOLUME,"off");
     if (volumePredictionDecider.equals("off")) {
-      Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Press Volume Down Button to Start Prediction", Snackbar.LENGTH_LONG);
+      Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Press Volume Up Button to Start Prediction", Snackbar.LENGTH_LONG);
       snackbar.show();
     }
     else {
@@ -188,7 +189,7 @@ public abstract class CameraActivity extends AppCompatActivity
     invalidateOptionsMenu();
 
     Toolbar toolbar = findViewById(R.id.my_toolbar);
-    setSupportActionBar(toolbar);
+    toolbar.setVisibility(View.GONE);
     setAudio();
     if (hasPermission()) {
       setFragment();
