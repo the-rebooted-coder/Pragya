@@ -29,7 +29,7 @@
             android:theme="@style/Theme.Design.NoActionBar"/>
         <activity android:name=".AboutDevs"
             android:theme="@style/Theme.Design.NoActionBar"/>
-        <activity android:name="org.tensorflow.lite.examples.classification.ClassifierActivity"/>
+        <activity android:name="org.tensorflow.lite.examples.classification.MainActivity"/>
         <activity android:name=".SignUp"
             android:theme="@style/Theme.Design.NoActionBar"/>
         <activity android:name=".SplashScreenShort"

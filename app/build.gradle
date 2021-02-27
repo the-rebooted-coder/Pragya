@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
 }
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 30
@@ -11,7 +13,7 @@ android {
         applicationId "com.aaxena.pragya"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 1
+        versionCode 2
         versionName "श्रवण|Shravan"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -27,6 +29,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        dataBinding = true
+        mlModelBinding true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
@@ -34,6 +43,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'org.tensorflow:tensorflow-lite-gpu:2.2.0'
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.4.31"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -52,10 +63,26 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
 
     //Tensorflow
-    implementation 'org.tensorflow:tensorflow-lite:2.4.0'
-    implementation 'org.tensorflow:tensorflow-lite-gpu:0.0.0-nightly'
     implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
+    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
+
+    // Import for CameraX
+    def camerax_version = "1.0.0-beta10"
+    // CameraX core library using camera2 implementation
+    implementation "androidx.camera:camera-camera2:$camerax_version"
+    // CameraX Lifecycle Library
+    implementation "androidx.camera:camera-lifecycle:$camerax_version"
+    // CameraX View class
+    implementation "androidx.camera:camera-view:1.0.0-alpha17"
+    implementation "androidx.activity:activity-ktx:1.2.0"
 
     //Google Play Store Updater
     implementation 'com.google.android.play:core:1.9.1'
+
+    //Kotlin
+    implementation "androidx.core:core-ktx:1.3.2"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

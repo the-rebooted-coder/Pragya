@@ -106,4 +106,5 @@
     <string name="use_volume_buttons_to_control_volume">Use Volume Buttons To Control Volume</string>
     <string name="tip2">When Enabled, You will be able to control prediction volume via volume buttons while camera is working</string>
     <string name="prediction_helper">Prediction</string>
+    <string name="permission_deny_text">Permission Denied</string>
 </resources>

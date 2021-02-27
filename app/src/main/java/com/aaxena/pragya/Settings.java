@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.tensorflow.lite.examples.classification.ClassifierActivity;
+import org.tensorflow.lite.examples.classification.MainActivity;
 
 import br.usp.ime.retrobreaker.WrapperActivity;
 
@@ -252,7 +252,7 @@ public class Settings extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent toLanding = new Intent(this, ClassifierActivity.class);
+        Intent toLanding = new Intent(this, MainActivity.class);
         startActivity(toLanding);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();
