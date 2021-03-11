@@ -56,7 +56,7 @@ import java.util.concurrent.Executors
 
 // Constants
 private const val MAX_RESULT_DISPLAY = 3 // Maximum number of results displayed
-private const val TAG = "TFL Classify" // Name for logging
+private const val TAG = "Pragya Currency Classify" // Name for logging
 private const val REQUEST_CODE_PERMISSIONS = 999 // Return code after asking for permission
 private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA) // permission needed
 
@@ -248,13 +248,9 @@ class MainActivity : AppCompatActivity() {
             val cameraSelector =
                 if (cameraProvider.hasCamera(CameraSelector.DEFAULT_BACK_CAMERA))
                     CameraSelector.DEFAULT_BACK_CAMERA else CameraSelector.DEFAULT_FRONT_CAMERA
-
             try {
                 // Unbind use cases before rebinding
                 cameraProvider.unbindAll()
-
-                // Bind use cases to camera - try to bind everything at once and CameraX will find
-                // the best combination.
                 camera = cameraProvider.bindToLifecycle(
                         this, cameraSelector, preview, imageAnalyzer
                 )
@@ -270,40 +266,18 @@ class MainActivity : AppCompatActivity() {
 
     private class ImageAnalyzer(ctx: Context, private val listener: RecognitionListener) :
         ImageAnalysis.Analyzer {
-
-
-        private val options = Model.Options.Builder()
-            .setDevice(Model.Device.GPU)
-            .build()
-
-        // TODO 1: Add class variable TensorFlow Lite Model
-        private val flowerModel = CurrencyModel.newInstance(ctx,options)
-
-
+        private val flowerModel = CurrencyModel.newInstance(ctx)
         override fun analyze(imageProxy: ImageProxy) {
 
             val items = mutableListOf<Recognition>()
-
-            // TODO 2: Convert Image to Bitmap then to TensorImage
             val tfImage = TensorImage.fromBitmap(toBitmap(imageProxy))
-            // TODO 3: Process the image using the trained model, sort and pick out the top results
             val outputs = flowerModel.process(tfImage)
                 .probabilityAsCategoryList.apply {
                     sortByDescending { it.score }
                 }.take(MAX_RESULT_DISPLAY)
-
-            // TODO 4: Converting the top probability items into a list of recognitions
             for (output in outputs){
                 items.add(Recognition(output.label,output.score))
             }
-
-//            // START - Placeholder code at the start of the codelab. Comment this block of code out.
-//            for (i in 0 until MAX_RESULT_DISPLAY){
-//                items.add(Recognition("Fake label $i", Random.nextFloat()))
-//            }
-//            // END - Placeholder code at the start of the codelab. Comment this block of code out.
-
-            // Return the result
             listener(items.toList())
 
             // Close the image,this tells CameraX to feed the next image to the analyzer
