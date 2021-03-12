@@ -280,6 +280,7 @@ class MainActivity : AppCompatActivity() {
             }
             listener(items.toList())
 
+
             // Close the image,this tells CameraX to feed the next image to the analyzer
             imageProxy.close()
         }
