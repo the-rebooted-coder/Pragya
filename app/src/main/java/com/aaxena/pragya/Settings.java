@@ -36,7 +36,6 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         ImageView longSplash = findViewById(R.id.switch_on);
-        ImageView volumePrediction = findViewById(R.id.switch_on2);
 
         //Loading Shared Prefs of Splash
         SharedPreferences sharedPreferences = getSharedPreferences(LONG_SPLASH, Context.MODE_PRIVATE);
@@ -48,45 +47,6 @@ public class Settings extends AppCompatActivity {
         else {
             longSplash.setBackgroundResource(R.drawable.switch_on);
         }
-
-        //Loading Shared Prefs of Volume
-        SharedPreferences sharedPreferencesVol = getSharedPreferences(VOLUME_CONTROL, Context.MODE_PRIVATE);
-        String volumePredictionDecider = sharedPreferencesVol.getString(VOLUME,"off");
-        if (volumePredictionDecider.equals("off"))
-        {
-            volumePrediction.setBackgroundResource(R.drawable.switch_off);
-        }
-        else {
-            volumePrediction.setBackgroundResource(R.drawable.switch_on);
-        }
-
-        //Volume Chooser Button
-        volumePrediction.setOnClickListener(v -> {
-            vibrateDevice();
-            playSound();
-            SharedPreferences settings2 = Settings.this.getSharedPreferences(VOLUME_CONTROL, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor2 = settings2.edit();
-            if (volumePredictionDecider.equals("off"))
-            {
-                int vib_delay = 100;
-                new Handler().postDelayed(this::vibrateDeviceLightly, vib_delay);
-                editor2.putString(VOLUME, "on");
-                editor2.commit();
-                Toast.makeText(Settings.this,"Volume Buttons now Control Volume",Toast.LENGTH_LONG).show();
-                volumePrediction.setBackgroundResource(R.drawable.switch_on);
-                recreate();
-            }
-            else{
-                int vib_delay = 100;
-                new Handler().postDelayed(this::vibrateDeviceLightly, vib_delay);
-                editor2.putString(VOLUME, "off");
-                editor2.commit();
-                Toast.makeText(Settings.this,"Volume Buttons now Control Predictions",Toast.LENGTH_LONG).show();
-                volumePrediction.setBackgroundResource(R.drawable.switch_off);
-                recreate();
-            }
-        });
-
 
         //Splash Screen Chooser Button
         longSplash.setOnClickListener(v -> {

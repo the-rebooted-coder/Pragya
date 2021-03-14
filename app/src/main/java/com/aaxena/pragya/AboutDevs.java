@@ -96,7 +96,7 @@ public class AboutDevs extends AppCompatActivity {
         models = new ArrayList<>();
         models.add(new Model(R.drawable.spandan, "Spandan Saxena", "BackEnd Developer & UX","Developers"));
         models.add(new Model(R.drawable.shrish, "Shrish Sharma", "UI & UX","are just"));
-        models.add(new Model(R.drawable.sriniv, "Srinivasan Bashyam", "Raw Assets & A.I. Model Data Facilitator","tools that transform"));
+        models.add(new Model(R.drawable.sriniv, "Srinivasan Bashyam", "Testing","tools that transform"));
         models.add(new Model(R.drawable.shubham, "Shubham Munjani", "A.I. Model Data Validator","caffeine to code"));
 
         adapter = new Adapter(models, this);

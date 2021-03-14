@@ -41,10 +41,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import com.aaxena.pragya.AboutPragya
+import com.aaxena.pragya.*
 import com.aaxena.pragya.R
-import com.aaxena.pragya.Settings
-import com.aaxena.pragya.UserInfo
 import com.aaxena.pragya.ml.CurrencyModel
 import org.tensorflow.lite.examples.classification.ui.RecognitionAdapter
 import org.tensorflow.lite.examples.classification.util.YuvToRgbConverter
@@ -88,6 +86,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        Toast.makeText(this@MainActivity, "auto-focus, detection engine started", Toast.LENGTH_SHORT).show()
 
         // Request camera permissions
         if (allPermissionsGranted()) {
@@ -170,7 +170,7 @@ class MainActivity : AppCompatActivity() {
         }
         R.id.devs -> {
             vibrateDevice();
-            val toSettings = Intent(this, Settings::class.java)
+            val toSettings = Intent(this, AboutDevs::class.java)
             startActivity(toSettings)
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
@@ -190,11 +190,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(toSettings)
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
-            true
-        }
-        R.id.prediction -> {
-            vibrateDevice();
-            Toast.makeText(this,"Under Dev",Toast.LENGTH_SHORT).show()
             true
         }
         else -> super.onOptionsItemSelected(item)

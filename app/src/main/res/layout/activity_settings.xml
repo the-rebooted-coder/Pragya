@@ -47,42 +47,12 @@
 
             <ImageView
                 android:id="@+id/switch_on"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
+                android:layout_width="220dp"
+                android:layout_height="220dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="55dp"
                 android:contentDescription="@string/image_of_retro_switch" />
 
-            <TextView
-                android:id="@+id/splash_chooser2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:fontFamily="@font/pragya"
-                android:text="@string/use_volume_buttons_to_control_volume"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-
-            <ImageView
-                android:id="@+id/switch_on2"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                android:contentDescription="@string/image_of_retro_switch" />
-
-            <TextView
-                android:id="@+id/tip2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="15dp"
-                android:fontFamily="@font/pragya"
-                android:text="@string/tip2"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="17sp" />
         </LinearLayout>
     </ScrollView>
 
