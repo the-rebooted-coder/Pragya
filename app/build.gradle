@@ -13,7 +13,7 @@ android {
         applicationId "com.aaxena.pragya"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 2
+        versionCode 3
         versionName "श्रवण|Shravan"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -52,7 +52,7 @@ dependencies {
     implementation 'com.github.pedromassango:doubleClick:3.0'
 
     //Firebase Google Login
-    implementation 'com.google.firebase:firebase-auth:20.0.2'
+    implementation 'com.google.firebase:firebase-auth:20.0.3'
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
     //Added Lottie Animations
