@@ -1,5 +1,5 @@
 # Pragya
-The currency friendly AI
+The currency friendly A.I.
 
 ## Detect Currency with Accuracy!
 
